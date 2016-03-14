@@ -15,8 +15,3 @@ Recipe.create!(config) do |c|
 	c.classifications << Classification.where("name like 'Nut%'").first
 end
 
-
-
-# seed_file = Rails.root.join('db', 'seeds', 'classifications_recipes.yml')
-# config = YAML::load_file(seed_file)
-# ClassificationRecipe.create!(config)
