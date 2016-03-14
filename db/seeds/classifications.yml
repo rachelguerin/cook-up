@@ -1,5 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 - name: Vegetarian
   description: Contains no meat products - fish chicken beef pork lamb poultry
 

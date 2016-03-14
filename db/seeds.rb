@@ -5,11 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-seed_file = Rails.root.join('db', 'seeds', 'recipes.yml')
-config = YAML::load_file(seed_file)
-Recipe.create!(config)
-
 seed_file = Rails.root.join('db', 'seeds', 'classifications.yml')
 config = YAML::load_file(seed_file)
 Classification.create!(config)
+
+seed_file = Rails.root.join('db', 'seeds', 'recipes.yml')
+config = YAML::load_file(seed_file)
+Recipe.create!(config) do |c|
+	c.classifications << Classification.where("name like 'Nut%'").first
+end
+
+
+
+# seed_file = Rails.root.join('db', 'seeds', 'classifications_recipes.yml')
+# config = YAML::load_file(seed_file)
+# ClassificationRecipe.create!(config)
