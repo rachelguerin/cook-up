@@ -9,9 +9,15 @@ seed_file = Rails.root.join('db', 'seeds', 'classifications.yml')
 config = YAML::load_file(seed_file)
 Classification.create!(config)
 
+seed_file = Rails.root.join('db', 'seeds', 'ingredients.yml')
+config = YAML::load_file(seed_file)
+Ingredient.create!(config) 
+
 seed_file = Rails.root.join('db', 'seeds', 'recipes.yml')
 config = YAML::load_file(seed_file)
-Recipe.create!(config) do |c|
-	c.classifications << Classification.where("name like 'Nut%'").first
+Recipe.create!(config) do |r|
+	r.classifications << Classification.where("name like 'Nut%'").first
+
 end
+
 
