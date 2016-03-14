@@ -28,7 +28,7 @@
   food_type: spice
   auto_list: false
 
-- name: tomato purée
+- name: tomato puree
   food_type: canned
   auto_list: true
 
