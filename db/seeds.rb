@@ -9,3 +9,7 @@
 seed_file = Rails.root.join('db', 'seeds', 'recipes.yml')
 config = YAML::load_file(seed_file)
 Recipe.create!(config)
+
+seed_file = Rails.root.join('db', 'seeds', 'classifications.yml')
+config = YAML::load_file(seed_file)
+Classification.create!(config)
