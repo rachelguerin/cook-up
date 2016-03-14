@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Spag Bog
+  prep_time: 20
+  cook_time: 30
+  servings: 6
+  method: Chop the veggies. Add oil to the saucepan. Brown onions and garlic. Add mince and brown. Add laurel and spices. Add tomato and other veggies. Cook for 30 mins. Cook pasta. Serve. Eat.
+
+two:
+  title: Pasta Salad
+  prep_time: 10
+  cook_time: 10
+  servings: 4
+  method: Cook pasta. Drain and cool. Chop veggies. Add 2 cans of tuna. Mix in pasta. Add salsa rosa. Eat.
