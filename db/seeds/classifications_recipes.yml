@@ -1,7 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-- recipe_id: 1
-  classification_id: 6
-
-- recipe_id: 2
-  classification_id: 6
