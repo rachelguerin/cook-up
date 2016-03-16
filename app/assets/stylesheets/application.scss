@@ -11,17 +11,14 @@
  * file per style scope.
  *
  *= require font-awesome
- *= require_self
  */
 
-@import "bulma/utilities/utilities";
-@import "bulma/config/variables";
-@import "bulma/config/generated-variables";
-@import "bulma/base/base";
-@import "bulma/elements/elements";
-@import "bulma/layout/layout";
-
-@import "framework/components.scss";
-@import "resources/menus.scss";
+@import "framework/utilities";
+@import "framework/variables";
+@import "framework/base";
+@import "framework/elements";
+@import "framework/components";
+@import "framework/layout";
+@import "resources/*";
 
 
