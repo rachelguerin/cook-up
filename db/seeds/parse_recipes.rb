@@ -1,5 +1,5 @@
 require 'unirest'
-# require 'pry'
+require 'pry'
 require 'json'
 
 ids = ["637663","638534","642293","662069","634582","638409","641893","647142",
@@ -39,7 +39,25 @@ ids.each do |id|
 		ingredients << ingredient
 	end
 
-	results << {recipe: recipe, ingredients: ingredients}
+	classifications = []
+
+	if response.body['vegan'] 
+		classifications << 'Vegetarian'
+		classifications << 'Vegan'
+	elsif response.body['vegetarian']
+		classifications << 'Vegetarian'
+	end
+
+	if response.body['glutenFree'] 
+		classifications << 'Gluten-Free' 
+	end 
+
+	if response.body['dairyFree']
+		classifications << 'Dairy-Free' 
+	end
+		
+
+	results << {recipe: recipe, ingredients: ingredients, classifications: classifications}
 end
 
 file = File.open("recipes_ingredients.json","w")
