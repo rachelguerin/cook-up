@@ -26,19 +26,15 @@
 		        <p class="title is-5"><%= r.title %></p>
 		        <p class="subtitle is-6">
 				<!-- <a href="#" class="icon is-small is-pulled-left"><i class="fa fa-heart"></i></a> -->
-		        <a href="#">[origin]</a></p>
+		        <a href=<%="#{r.source_url}"%> target="blank">[origin]</a></p>
 		      </div>
 		    </div>
 
 		    <div class="content">
-		      Short description of the menu 
+		      Ready in <strong><%= r.cook_time %></strong> minutes
 		      <br>
-		      Ready in <%= r.cook_time %> minutes
-		      <br>
-		      Serves <%= r.servings %>
-		      
-			  
-		    
+		      Serves <strong><%= r.servings %></strong> 
+	    
 		    </div>
 		  </div>  
 		</div>

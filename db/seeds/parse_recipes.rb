@@ -26,6 +26,7 @@ ids.each do |id|
 	recipe[:method] = response.body['instructions']
 	recipe[:image_url] = response.body['image']  
 	recipe[:original_id] = response.body['id']
+	recipe[:source_url] = response.body['sourceUrl']
 
 	ingredients = []
 
