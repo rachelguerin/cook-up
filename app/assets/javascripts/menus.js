@@ -9,4 +9,15 @@ $(document).on("ready",function(){
 	$('.modal-background, .modal-close').on('click',function(){
 		$('.modal').removeClass('is-active');
 	});
+
+	$('.js-time').on('click',function(){
+		$('.modal').removeClass('is-active');
+		$('.js-calorie-counter').addClass('is-active');
+	});
+
+	$('.js-calorie').on('click',function(){
+		$('.modal').removeClass('is-active');
+		$('.js-diet-restrictions').addClass('is-active');
+	});
+
 });
