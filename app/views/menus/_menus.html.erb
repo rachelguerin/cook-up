@@ -1,172 +1,71 @@
 <div class="menus">
-	<div class="columns">
-		<section class="section"></section>
-	</div>
-	<div class="columns">
+  <div class="columns"></div>
+
+  <div class="columns">
+
+<% @recipes.each_with_index do |r,i| %>
+	<% if i == 0 %>
 	  <div class="column is-2 is-offset-1">
-	    <div class="card">
-		  <div class="card-image">
-		    <figure class="image is-4by3">
-		      <img src=<%="#{@monday_recipe.image_url}"%> alt="">
-		    </figure>
-		  </div>
-		  <div class="card-content">
-		    <div class="media">
-		     <!--  <div class="media-left">
-		        <figure class="image is-32x32">
-		          <img src="http://placehold.it/64x64" alt="Image">
-		        </figure>
-		      </div> -->
-		      <div class="media-content">
-		        <p class="title is-5"><%= @monday_recipe.title %></p>
-		        <p class="subtitle is-6">Provided by <a href="#">[name]</a></p>
-		      </div>
-		    </div>
-
-		    <div class="content">
-		      Short description of the menu 
-		      <br>
-		      Ready in xxx minutes
-		      <br>
-		      Serves n
-		      <br>
-		      <small><a href="#" class="is-pulled-right">>></a></small>
-		    </div>
-		  </div>
-		</div>
-	  </div>
+	<% else %>
 	  <div class="column is-2">
+	<% end %>
 	    <div class="card">
+
 		  <div class="card-image">
 		    <figure class="image is-4by3">
-		      <img src=<%="#{@tuesday_recipe.image_url}"%> alt="">
+		    
+		    <a href="#" class="icon is-small is-pulled-right"><i class="fa fa-times"></i></a>
+		      <img src=<%="#{r.image_url}"%> alt="">
 		    </figure>
 		  </div>
 		  <div class="card-content">
 		    <div class="media">
-		      <!-- <div class="media-left">
-		        <figure class="image is-32x32">
-		          <img src="http://placehold.it/64x64" alt="Image">
-		        </figure>
+		      <!-- <div class="media-left">  
 		      </div> -->
 		      <div class="media-content">
-		        <p class="title is-5"><%= @tuesday_recipe.title %></p>
-		        <p class="subtitle is-6">Provided by <a href="#">[name]</a></p>
+		        <p class="title is-5"><%= r.title %></p>
+		        <p class="subtitle is-6">
+				<!-- <a href="#" class="icon is-small is-pulled-left"><i class="fa fa-heart"></i></a> -->
+		        <a href="#">[origin]</a></p>
 		      </div>
 		    </div>
 
 		    <div class="content">
 		      Short description of the menu 
 		      <br>
-		      Ready in xxx minutes
+		      Ready in <%= r.cook_time %> minutes
 		      <br>
-		      Serves n
-		      <br>
-		      <small><a href="#" class="is-pulled-left"><<</a></small><small><a href="#" class="is-pulled-right">>></a></small>
-		    </div>
-		  </div>
-		</div>
-	  </div>
-	  <div class="column is-2">
-	    <div class="card">
-		  <div class="card-image">
-		    <figure class="image is-4by3">
-		      <img src=<%="#{@wednesday_recipe.image_url}"%> alt="">
-		    </figure>
-		  </div>
-		  <div class="card-content">
-		    <div class="media">
-		    <!--   <div class="media-left">
-		        <figure class="image is-32x32">
-		          <img src="http://placehold.it/64x64" alt="Image">
-		        </figure>
-		      </div> -->
-		      <div class="media-content">
-		        <p class="title is-5"><%= @wednesday_recipe.title %></p>
-		        <p class="subtitle is-6">Provided by <a href="#">[name]</a></p>
-		      </div>
-		    </div>
-
-		    <div class="content">
-		      Short description of the menu 
-		      <br>
-		      Ready in xxx minutes
-		      <br>
-		      Serves n
-		      <br>
-		      <small><a href="#" class="is-pulled-left"><<</a>
+		      Serves <%= r.servings %>
 		      
-		      <a href="#" class="is-pulled-right">>></a></small>
+			  
+		    
 		    </div>
-		  </div>
+		  </div>  
 		</div>
-	  </div>
-	  <div class="column is-2">
-	    <div class="card">
-		  <div class="card-image">
-		    <figure class="image is-4by3">
-		      <img src=<%="#{@thursday_recipe.image_url}"%> alt="">
-		    </figure>
-		  </div>
-		  <div class="card-content">
-		    <div class="media">
-		    <!--   <div class="media-left">
-		        <figure class="image is-32x32">
-		          <img src="http://placehold.it/64x64" alt="Image">
-		        </figure>
-		      </div> -->
-		      <div class="media-content">
-		        <p class="title is-5"><%= @thursday_recipe.title %></p>
-		        <p class="subtitle is-6">Provided by <a href="#">[name]</a></p>
-		      </div>
-		    </div>
 
-		    <div class="content">
-		      Short description of the menu 
-		      <br>
-		      Ready in xxx minutes
-		      <br>
-		      Serves n
-		      <br>
-		      <small><a href="#" class="is-pulled-left"><<</a>		      
-		      <a href="#" class="is-pulled-right">>></a></small>
-		      
-		    </div>
-		  </div>
-		</div>
 	  </div>
-	  <div class="column is-2">
-	    <div class="card">
-		  <div class="card-image">
-		    <figure class="image is-4by3">
-		      <img src=<%="#{@friday_recipe.image_url}"%> alt="">
-		    </figure>
-		  </div>
-		  <div class="card-content">
-		    <div class="media">
-		     <!--  <div class="media-left">
-		        <figure class="image is-32x32">
-		          <img src="http://placehold.it/64x64" alt="Image">
-		        </figure>
-		      </div> -->
-		      <div class="media-content">
-		        <p class="title is-5"><%= @friday_recipe.title %></p>
-		        <p class="subtitle is-6">Provided by <a href="#">[name]</a></p>
-		      </div>
-		    </div>
-
-		    <div class="content">
-		      Short description of the menu 
-		      <br>
-		      Ready in xxx minutes
-		      <br>
-		      Serves n
-		      <br>
-		      <small><a href="#" class="is-pulled-left"><<</a>          
-		    </div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-
+<% end %>
 </div>
+<!-- <div class="columns">
+	  <div class="column is-2 is-offset-2">
+	  	<div class="container is-text-centered">
+		  <a href="#" class=""><i class="fa fa-angle-double-right"></i><i class="fa fa-angle-double-left"></i></a>
+		</div>
+	  </div>
+	  <div class="column is-2">
+		<div class="container is-text-centered">
+		  <a href="#" class=""><i class="fa fa-angle-double-left"></i><i class="fa fa-angle-double-right"></i></a>
+		</div>
+	  </div>
+	  <div class="column is-2">
+		<div class="container is-text-centered">
+		  <a href="#" class=""><i class="fa fa-angle-double-left"></i><i class="fa fa-angle-double-right"></i></a>
+		</div>
+	  </div>
+	  <div class="column is-2">
+		<div class="container is-text-centered">
+		  <a href="#" class=""><i class="fa fa-angle-double-left"></i><i class="fa fa-angle-double-right"></i></a>
+		</div>
+  </div>
+</div> -->
+
