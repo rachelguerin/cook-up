@@ -9,11 +9,6 @@
 	            <img src="images/bulma-white.png" alt="Logo">
 	          </a> -->
 	        </div>
-	        <span class="header-toggle">
-	          <span></span>
-	          <span></span>
-	          <span></span>
-	        </span>
 	        <div class="header-right header-menu">
 	          <span class="header-item">
 	            <a class="button is-success is-inverted">
@@ -27,7 +22,7 @@
 
 	  <div class="hero-content">
 	    <div class="container">
-	      <h1 class="title">
+	      <h1 class="title is-1">
 	        <strong>cook-up</strong>
 	      </h1>
 	      <h2 class="subtitle">
@@ -38,273 +33,18 @@
 	  </div>
 	</section>
 </header>
-<div class="menus">
-	<div class="columns">
-		<section class="section"></section>
-	</div>
-	<div class="columns">
-	  <div class="column is-2 is-offset-1">
-	    <div class="card">
-		  <div class="card-image">
-		    <figure class="image is-4by3">
-		      <img src=<%="#{@monday_recipe.image_url}"%> alt="">
-		    </figure>
-		  </div>
-		  <div class="card-content">
-		    <div class="media">
-		     <!--  <div class="media-left">
-		        <figure class="image is-32x32">
-		          <img src="http://placehold.it/64x64" alt="Image">
-		        </figure>
-		      </div> -->
-		      <div class="media-content">
-		        <p class="title is-5"><%= @monday_recipe.title %></p>
-		        <p class="subtitle is-6">Provided by <a href="#">[name]</a></p>
-		      </div>
-		    </div>
 
-		    <div class="content">
-		      Short description of the menu 
-		      <br>
-		      Ready in xxx minutes
-		      <br>
-		      Serves n
-		      <br>
-		      <small><a href="#" class="is-pulled-right">>></a></small>
-		    </div>
-		  </div>
-		</div>
-	  </div>
-	  <div class="column is-2">
-	    <div class="card">
-		  <div class="card-image">
-		    <figure class="image is-4by3">
-		      <img src=<%="#{@tuesday_recipe.image_url}"%> alt="">
-		    </figure>
-		  </div>
-		  <div class="card-content">
-		    <div class="media">
-		      <!-- <div class="media-left">
-		        <figure class="image is-32x32">
-		          <img src="http://placehold.it/64x64" alt="Image">
-		        </figure>
-		      </div> -->
-		      <div class="media-content">
-		        <p class="title is-5"><%= @tuesday_recipe.title %></p>
-		        <p class="subtitle is-6">Provided by <a href="#">[name]</a></p>
-		      </div>
-		    </div>
+<%= render 'menus' %>
 
-		    <div class="content">
-		      Short description of the menu 
-		      <br>
-		      Ready in xxx minutes
-		      <br>
-		      Serves n
-		      <br>
-		      <small><a href="#" class="is-pulled-left"><<</a></small><small><a href="#" class="is-pulled-right">>></a></small>
-		    </div>
-		  </div>
-		</div>
-	  </div>
-	  <div class="column is-2">
-	    <div class="card">
-		  <div class="card-image">
-		    <figure class="image is-4by3">
-		      <img src=<%="#{@wednesday_recipe.image_url}"%> alt="">
-		    </figure>
-		  </div>
-		  <div class="card-content">
-		    <div class="media">
-		    <!--   <div class="media-left">
-		        <figure class="image is-32x32">
-		          <img src="http://placehold.it/64x64" alt="Image">
-		        </figure>
-		      </div> -->
-		      <div class="media-content">
-		        <p class="title is-5"><%= @wednesday_recipe.title %></p>
-		        <p class="subtitle is-6">Provided by <a href="#">[name]</a></p>
-		      </div>
-		    </div>
+<%= render 'modal_time' %>
 
-		    <div class="content">
-		      Short description of the menu 
-		      <br>
-		      Ready in xxx minutes
-		      <br>
-		      Serves n
-		      <br>
-		      <small><a href="#" class="is-pulled-left"><<</a>
-		      
-		      <a href="#" class="is-pulled-right">>></a></small>
-		    </div>
-		  </div>
-		</div>
-	  </div>
-	  <div class="column is-2">
-	    <div class="card">
-		  <div class="card-image">
-		    <figure class="image is-4by3">
-		      <img src=<%="#{@thursday_recipe.image_url}"%> alt="">
-		    </figure>
-		  </div>
-		  <div class="card-content">
-		    <div class="media">
-		    <!--   <div class="media-left">
-		        <figure class="image is-32x32">
-		          <img src="http://placehold.it/64x64" alt="Image">
-		        </figure>
-		      </div> -->
-		      <div class="media-content">
-		        <p class="title is-5"><%= @thursday_recipe.title %></p>
-		        <p class="subtitle is-6">Provided by <a href="#">[name]</a></p>
-		      </div>
-		    </div>
+<%= render 'modal_calorie' %>
 
-		    <div class="content">
-		      Short description of the menu 
-		      <br>
-		      Ready in xxx minutes
-		      <br>
-		      Serves n
-		      <br>
-		      <small><a href="#" class="is-pulled-left"><<</a>		      
-		      <a href="#" class="is-pulled-right">>></a></small>
-		      
-		    </div>
-		  </div>
-		</div>
-	  </div>
-	  <div class="column is-2">
-	    <div class="card">
-		  <div class="card-image">
-		    <figure class="image is-4by3">
-		      <img src=<%="#{@friday_recipe.image_url}"%> alt="">
-		    </figure>
-		  </div>
-		  <div class="card-content">
-		    <div class="media">
-		     <!--  <div class="media-left">
-		        <figure class="image is-32x32">
-		          <img src="http://placehold.it/64x64" alt="Image">
-		        </figure>
-		      </div> -->
-		      <div class="media-content">
-		        <p class="title is-5"><%= @friday_recipe.title %></p>
-		        <p class="subtitle is-6">Provided by <a href="#">[name]</a></p>
-		      </div>
-		    </div>
+<%= render 'modal_diet' %>
 
-		    <div class="content">
-		      Short description of the menu 
-		      <br>
-		      Ready in xxx minutes
-		      <br>
-		      Serves n
-		      <br>
-		      <small><a href="#" class="is-pulled-left"><<</a>          
-		    </div>
-		  </div>
-		</div>
-	  </div>
-	</div>
 
-</div>
 
-<div class="modal js-time-limit">
-  <div class="modal-background"></div>
-  <div class="modal-container">
-    <div class="modal-content">
-      <section class="box">
-      	<div class="message is-success">
-		  
-		  <section class="hero is-success is-bold">
-		    <div class="hero-content">
-		      <div class="container">
-		        <h1 class="title">How much time do you have to cook this week?</h1>	    
-			  	
-			    	<a href="#" class="button is-danger js-time js-no-time">The walkers are restless</a>
-			   		<br><br>
-			    
-			    	<a href="#" class="button is-warning js-time js-some-time">The couch is calling</a>
-			    	<br><br>
-			   
-			    	<a href="#" class="button is-success is-inverted js-time js-all-time">I am Gordon Ramsay</a>
-			  	
-			  </div>
-		  	</div>
-		  </section>
-		</div>
-      </section>
-    </div>
-  </div>
-  <button class="modal-close"></button>
-</div>
 
-<div class="modal js-calorie-counter">
-  <div class="modal-background"></div>
-  <div class="modal-container">
-    <div class="modal-content">
-      <section class="box">
-      	<div class="message is-success">
-		  
-		  <section class="hero is-success is-bold">
-		    <div class="hero-content">
-		      <div class="container">
-		        <h1 class="title">How strict is your diet?</h1>	    
-			  	
-			    	<a href="#" class="button is-danger js-calorie js-low-calorie">Mission Bikini</a>
-			   		<br><br>
-			    
-			    	<a href="#" class="button is-warning js-calorie js-mid-calorie">Mix it up</a>
-			    	<br><br>
-			   
-			    	<a href="#" class="button is-success is-inverted js-calorie js-all-calorie">I live to eat</a>
-			  	
-			  </div>
-		  	</div>
-		  </section>
-		</div>
-      </section>
-    </div>
-  </div>
-  <button class="modal-close"></button>
-</div>
-
-<div class="modal js-diet-restrictions">
-  <div class="modal-background"></div>
-  <div class="modal-container">
-    <div class="modal-content">
-      <section class="box">
-      	<div class="message is-success">
-		  
-		  <section class="hero is-success is-bold">
-		    <div class="hero-content">
-		      <div class="container">
-		        <h1 class="title">Do you have any dietary restrictions?</h1>	    
-			  	
-			    	<a href="#" class="button is-danger js-diet js-diet-vegan">Vegan</a>
-			   		<br><br>
-			    
-			    	<a href="#" class="button is-warning js-diet js-diet-vegetarian">Vegetarian</a>
-			    	<br><br>
-			   
-			    	<a href="#" class="button is-info js-diet js-diet-lactose">Lactose Intolerance</a>
-			  		<br><br>
-			   
-			    	<a href="#" class="button is-primary is-inverted js-diet js-diet-gluten">Gluten Free</a>
-			    	<br><br>
-			   
-			    	<a href="#" class="button is-black is-inverted js-diet js-diet-nuts">Nut Free</a>
-			  </div>
-		  	</div>
-		  </section>
-		</div>
-      </section>
-    </div>
-  </div>
-  <button class="modal-close"></button>
-</div>
 
 <footer class="footer">
 
