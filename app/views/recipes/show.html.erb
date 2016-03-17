@@ -6,11 +6,13 @@
 		  <img src=<%="#{@recipe.image_url}"%> alt="">
 		</figure>
 	  </div>
-	  <div class="box">
-	    <dl></dl>
+	  <div class="box ingredients">
+	  	<h4 class="title is-4">Ingredients</h3>
+	  	<ul>
 	  	<% @ingredients.each do |i| %>
-		  <p><%= " #{'%g' % i[:quantity]} #{i[:unit]} #{i[:name]}" %></p> 
+		  <li><%= " #{'%g' % i[:quantity]} #{i[:unit]} #{i[:name]}" %></li> 
 	  	<% end %>
+	  	</ul>
 	  </div>
 	</div>
 	<div class="column is-8">
