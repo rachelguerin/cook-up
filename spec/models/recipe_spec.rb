@@ -1,15 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Recipe do
-	
-	
-	describe "Check fields" do
+		
+	describe "Check fields" do 
 		let(:recipe) {Recipe.new({title: "Recipe title", 
 						cook_time: 45, 
 						servings: 4, 
 						method: "cook it and eat it", 
 						image_url:"https://spoonacular.com/recipeImages/Cheesy-Grits-Casserole-637663.jpg", 
-						original_id: 123456})}
+						original_id: 123456,
+						source_url: "https://thisisthesourceurl"
+						})}
 
 		it "has a title" do
 			expect(recipe.title).not_to eq(nil)
@@ -61,5 +62,51 @@ RSpec.describe Recipe do
 		it "has original id 123456" do
 			expect(recipe.original_id).to eq(123456)
 		end
+	end
+
+	describe "retrieving recipes" do
+
+		let(:r2) {Recipe.create(title: "Recipe 1",
+							cook_time: rand(120), 
+							servings: rand(8), 
+							method: "1 cook it and eat it", 
+							image_url:"https://spoonacular.com/recipeImages/Cheesy-Grits-Casserole-637663.jpg", 
+							original_id: rand(999999),
+							source_url: "https://thisisthesourceurl"
+						)}
+		let(:i1) {Ingredient.create(name: "1 ingredient",
+							food_type: "#{rand(4)} type",
+							auto_list: true
+						)}
+
+		it "returns 5" do
+			expect(Recipe.get_any_5.count).to eq(5)
+		end
+
+ 		it "gets ingredients" do		
+ 			r2.quantities.create(ingredient: i1, quantity: 1, unit: 'units')
+ 			expect(r2.get_ingredients.count).to be > 0
+ 		end
+
+ 		it "contains name" do
+ 			r2.quantities.create(ingredient: i1, quantity: 1, unit: 'units')
+ 			expect(r2.get_ingredients.first[:name]).not_to be(nil)
+ 		end
+
+ 		it "contains food_type" do
+ 			r2.quantities.create(ingredient: i1, quantity: 1, unit: 'units')
+ 			expect(r2.get_ingredients.first[:food_type]).not_to be(nil)
+ 		end
+
+ 		it "contains quantity" do
+ 			r2.quantities.create(ingredient: i1, quantity: 1, unit: 'units')
+ 			expect(r2.get_ingredients.first[:quantity]).not_to be(nil)
+ 		end
+
+ 		it "contains unit" do
+ 			r2.quantities.create(ingredient: i1, quantity: 1, unit: 'units')
+ 			expect(r2.get_ingredients.first[:unit]).not_to be(nil)
+ 		end
+
 	end
 end

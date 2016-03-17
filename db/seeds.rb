@@ -17,14 +17,6 @@ end
 
 recipes = ActiveSupport::JSON.decode(File.read('db/seeds/recipes_ingredients.json'))
 
-def get_ingredient(name, food_type)
-	i = Ingredient.where(name: name).first
-	if i == nil
-		i = Ingredient.create(name: name, food_type: food_type, auto_list: true)
-	end
-	return i
-end
-
 recipes['results'].each do |a|
 	r = Recipe.create!(a['recipe']) 
 	i = a['ingredients']

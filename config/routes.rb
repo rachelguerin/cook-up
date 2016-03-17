@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :menus, only: [:index, :show]
+  resources :recipes, only: [:index, :show]
  
-  get '/' => 'menus#index'
+  get '/' => 'recipes#index'
+
 end

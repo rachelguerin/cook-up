@@ -1,0 +1,27 @@
+
+<div class="columns">
+	<div class="column is-4">
+	  <div class="box">
+		<figure class="image is-4by3">
+		  <img src=<%="#{@recipe.image_url}"%> alt="">
+		</figure>
+	  </div>
+	  <div class="box">
+	    <dl></dl>
+	  	<% @ingredients.each do |i| %>
+		  <p><%= " #{'%g' % i[:quantity]} #{i[:unit]} #{i[:name]}" %></p> 
+	  	<% end %>
+	  </div>
+	</div>
+	<div class="column is-8">
+	  <div class="box">
+
+	  	<h2 class="title is-2"><%= @recipe.title %></h2>
+	  </div>
+	  <div class="box">
+		<div class="method">
+			<%= raw(@recipe.method) %>
+		</div>
+	  </div>
+	</div>
+</div>

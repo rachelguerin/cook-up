@@ -7,7 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<header class="header">
+	<div class="container">
+	<div class="header-left">
+		<span class="header-item">
+		  <h1 class="title">
+		        <strong><a href="/"><%= @title %></a></strong>
+		  </h1>
+		</span>
+	</div>
+	<div class="header-right header-menu">
+	  <span class="header-item">
+	    <a class="button is-success is-inverted">
+	      <i class="fa fa-shopping-cart"></i>
+	    </a>
+	  </span>
+	  <span class="header-item">
+	    <a class="button is-success is-inverted">
+	      <i class="fa fa-bookmark"></i>
+	    </a>
+	  </span>
+	</div>
+	</div>
+</header>
 <%= yield %>
 
 </body>

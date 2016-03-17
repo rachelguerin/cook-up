@@ -1,1 +1,14 @@
 @import "bulma/layout/layout";
+
+.header {
+	background: #97CD76;
+}
+
+.header a {
+	color: #fff;
+}
+
+.header a:hover {
+	color: #fff;
+	border: none;
+}

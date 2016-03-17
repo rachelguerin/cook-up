@@ -16,4 +16,16 @@ class Recipe < ActiveRecord::Base
   	def self.get_any_5
   		Recipe.order("RANDOM()").limit(5)
   	end
+
+    def get_ingredients
+      these_ingredients = []
+      ingredients.each do |i|
+        qty = quantities.where(ingredient: i).first.quantity
+        unit = quantities.where(ingredient: i).first.unit
+        these_ingredients << {name: i.name, quantity: qty, unit: unit, food_type: i.food_type}
+      end
+    
+      these_ingredients
+
+    end
 end
