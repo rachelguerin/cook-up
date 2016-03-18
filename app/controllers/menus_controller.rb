@@ -4,4 +4,15 @@ class MenusController < ApplicationController
 		@title = ""
 	end
 
+	def search_recipes
+		@recipes = Recipe.get_recipes(params)
+		render json: @recipes
+	end
+
+	private
+  
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def recipe_params
+      params.permit(:servings, :cook_time, :classifications)
+    end
 end

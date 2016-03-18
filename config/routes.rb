@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   get '/list' => 'shopping_list#list'
 
+  post '/' => 'menus#search_recipes'
+
 end

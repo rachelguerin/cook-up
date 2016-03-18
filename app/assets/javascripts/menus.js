@@ -1,43 +1,105 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-MyMenuApp.MyMenu = function() {
-	
+MyMenuApp.MyMenu = function(cook_time, servings, classifications) {
+	this.cook_time = cook_time;
+	this.servings = servings;
+	this.classifications = [2];
+};
+
+MyMenuApp.MyMenu.prototype.setCookTime = function(time){
+	this.cook_time = time;
+};
+
+MyMenuApp.MyMenu.prototype.setServings = function(servings){
+	this.servings = servings;
+};
+
+
+MyMenuApp.MyMenu.prototype.render = function(){
+	console.log("Rendering menus: "+ this.cook_time + " minutes, " + this.servings + " serves, classifications "+ this.classifications);
+
+	var self = this; //so we have THIS this, not the function this once we get to ajax
+
+	$.ajax({
+		type:'POST',
+		url: "/",
+		data: {cook_time: this.cook_time, servings: this.servings, classifications: this.classifications},
+		success: function (response) {	
+			self.info = response;
+			console.log("Recipes:")
+			console.log(self.info);
+
+			var recipes = [];
+
+			$.each(self.info,function(i,recipe){
+
+				if (i<5){
+					$($('.js-recipe')[i]).data('type-id',recipe.id);
+					$($('.js-recipe-link')[i]).attr("href","recipes/"+recipe.id);
+					$($('.js-image')[i]).attr("src",recipe.image_url);
+					$($('.js-origin')[i]).attr("href",recipe.source_url);
+					$($('.js-title')[i]).text(recipe.title);
+					$($('.js-minutes')[i]).text(recipe.cook_time);
+					$($('.js-servings')[i]).text(recipe.servings);
+				} else {
+					recipes.push(recipe);
+				}
+
+				localStorage.setItem("recipeBackups",JSON.stringify(recipe));
+				MyMenuApp.MyMenu.saveAllToLocal();
+			});		
+		},
+		error: function(error){
+			console.log("There was an error.");
+			console.log(error);
+		}
+	});
 };
 
 MyMenuApp.MyMenu.renderLocalStorage = function(){
-	var images = JSON.parse(localStorage.getItem("images"));
-	var origins = JSON.parse(localStorage.getItem("origins"));
-	var titles = JSON.parse(localStorage.getItem("titles"));
-	var minutes = JSON.parse(localStorage.getItem("minutes"));
-	var servings = JSON.parse(localStorage.getItem("servings"));
-	
-	if (images != null){
-		$.each(images,function(i,img){
-			$($('.js-image')[i]).attr("src",img)
+	var recipes = JSON.parse(localStorage.getItem("savedRecipes"));
+
+	if (recipes != null){
+		$.each(recipes,function(i,recipe){
+			$($('.js-recipe')[i]).data('type-id',recipe.id);
+			$($('.js-recipe-link')[i]).attr("href","recipes/"+recipe.id);
+			$($('.js-image')[i]).attr("src",recipe.image_url);
+			$($('.js-origin')[i]).attr("href",recipe.source_url);
+			$($('.js-title')[i]).text(recipe.title);
+			$($('.js-minutes')[i]).text(recipe.cook_time);
+			$($('.js-servings')[i]).text(recipe.servings);
 		})
 
-		$.each(origins,function(i,org){
-			$($('.js-origin')[i]).attr("href",org)
-		})
-
-		$.each(titles,function(i,title){
-			$($('.js-title')[i]).text(title);
-		})
-
-		$.each(minutes,function(i,min){
-			$($('.js-minutes')[i]).text(min);
-		})
-
-		$.each(servings,function(i,serv){
-			$($('.js-servings')[i]).text(serv);
-		})
 	}
+};
+
+MyMenuApp.MyMenu.saveAllToLocal = function(){
+	var recipes = [];
+	console.log("Saving weekly menu..")
+
+	$.each([1,2,3,4,5],function(i,x){
+		r = new MyMenuApp.Recipe(
+				$($('.js-recipe')[i]).data('type-id'),
+				$($('.js-image')[i]).attr("src"),
+				$($('.js-origin')[i]).attr("href"),
+				$($('.js-title')[i]).text(),
+				$($('.js-minutes')[i]).text(),
+				$($('.js-servings')[i]).text()
+			);
+
+		recipes.push(r);
+
+	});
+
+	localStorage.setItem("savedRecipes",JSON.stringify(recipes));
+
 };
 
 $(document).on("ready",function(){
 	
 	MyMenuApp.MyMenu.renderLocalStorage();
+	var my_menu = new MyMenuApp.MyMenu(0,0,[]);
 
 	$('.js-go').on('click',function(){
 		$('.js-time-limit').addClass('is-active');
@@ -47,37 +109,50 @@ $(document).on("ready",function(){
 		$('.modal').removeClass('is-active');
 	});
 
-	$('.js-time').on('click',function(){
+	$('.js-time').on('click',function(){	
 		$('.modal').removeClass('is-active');
 		$('.js-howmany-modal').addClass('is-active');
 	});
 
-	$('.js-howmany-modal').on('click',function(){
+	$('.js-no-time').on('click',function(){	
+		my_menu.setCookTime(45);
+	});
+
+	$('.js-some-time').on('click',function(){	
+		my_menu.setCookTime(90);
+	});
+
+	$('.js-all-time').on('click',function(){	
+		my_menu.setCookTime(120);
+	});
+
+	$('.js-howmany').on('click',function(){
 		$('.modal').removeClass('is-active');
 		$('.js-diet-restrictions').addClass('is-active');
 	});
 
-	$('.js-save').on('click',function(){
-		var counter = [0,1,2,3,4];
-		console.log("Saving weekly menu..")
-		var images = [];
-		var origins = [];
-		var titles = [];
-		var minutes = [];
-		var servings = [];
-		$.each(counter,function(i,x){
-			images.push($($('.js-image')[i]).attr("src"));
-			origins.push($($('.js-origin')[i]).attr("href"));
-			titles.push($($('.js-title')[i]).text());
-			minutes.push($($('.js-minutes')[i]).text());
-			servings.push($($('.js-servings')[i]).text());
-		});
+	$('.js-howmany-couple').on('click',function(){
+		my_menu.setServings(3);
+	});
 
-		localStorage.setItem("images",JSON.stringify(images));
-		localStorage.setItem("origins",JSON.stringify(origins));
-		localStorage.setItem("titles",JSON.stringify(titles));
-		localStorage.setItem("minutes",JSON.stringify(minutes));
-		localStorage.setItem("servings",JSON.stringify(servings));
+	$('.js-howmany-crowd').on('click',function(){
+		my_menu.setServings(5);
+	});
+
+	$('.js-howmany-army').on('click',function(){
+		my_menu.setServings(10);
+	});
+
+
+	$('.js-diet').on('click',function(){
+		$('.modal').removeClass('is-active');
+		console.log('calling AJAX'); 
+		my_menu.render();
+	});
+
+	$('.js-save').on('click',function(){
+		MyMenuApp.MyMenu.saveAllToLocal();
+		
 	});
 
 });

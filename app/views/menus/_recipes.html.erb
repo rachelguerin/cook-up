@@ -1,7 +1,9 @@
 <div class="menus">
   <div class="columns"></div>
 
-  <div class="columns">
+  <div class="container">  
+	<div class="columns is-mobile">
+  	
 
 <% @recipes.each_with_index do |r,i| %>
 	<% if i == 0 %>
@@ -15,7 +17,7 @@
 		    <figure class="image is-4by3">
 		    
 		    <a href="#" class="icon is-small is-pulled-right"><i class="fa fa-times"></i></a>
-		      <a href=<%="/recipes/#{r.id}"%>><img class="js-image" src=<%="#{r.image_url}"%> alt=""></a>
+		      <a class="js-recipe-link" href=<%="/recipes/#{r.id}"%>><img class="js-image" src=<%="#{r.image_url}"%> alt=""></a>
 		    </figure>
 		  </div>
 		  <div class="card-content">
@@ -41,9 +43,10 @@
 
 	  </div>
 <% end %>
+	</div>
 </div>
 <!-- <div class="columns">
-	  <div class="column is-2 is-offset-2">
+	  <div class="column is-offset-2">
 	  	<div class="container is-text-centered">
 		  <a href="#" class=""><i class="fa fa-angle-double-right"></i><i class="fa fa-angle-double-left"></i></a>
 		</div>

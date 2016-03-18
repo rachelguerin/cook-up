@@ -28,4 +28,15 @@ class Recipe < ActiveRecord::Base
       these_ingredients
 
     end
+
+    def self.get_recipes(params)
+
+      recipes = Recipe.where(cook_time: 0..params[:cook_time].to_f, 
+                    servings: 0..params[:servings].to_f)
+      classifications = params[:classifications].map {|c| c.to_i}
+
+      recipes.select {|r| r.classifications.ids & classifications == classifications }
+
+
+    end
 end
