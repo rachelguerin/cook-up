@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:index, :show]
  
-  get '/' => 'recipes#index'
+  get '/' => 'menus#home'
+
+  get '/list' => 'shopping_list#list'
 
 end
