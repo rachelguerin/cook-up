@@ -30,13 +30,16 @@ class Recipe < ActiveRecord::Base
     end
 
     def self.get_recipes(params)
-
+binding.pry
       recipes = Recipe.where(cook_time: 0..params[:cook_time].to_f, 
                     servings: 0..params[:servings].to_f)
-      classifications = params[:classifications].map {|c| c.to_i}
 
-      recipes.select {|r| r.classifications.ids & classifications == classifications }
+      if !params[:classifications].nil?
+        classifications = params[:classifications].map {|c| c.to_i}
+        recipes.select! {|r| r.classifications.ids & classifications == classifications }
+      end
 
+      recipes
 
     end
 end
