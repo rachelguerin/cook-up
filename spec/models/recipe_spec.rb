@@ -109,4 +109,27 @@ RSpec.describe Recipe do
  		end
 
 	end
+
+	describe "returns recipes within search parameters" do
+		
+		it "finds cook_time 45" do		
+			expect(Recipe.get_recipes({cook_time: 45,servings: 3}).first.cook_time).to be <= 45
+		end
+		it "finds cook_time 90" do		
+			expect(Recipe.get_recipes({cook_time: 90,servings: 3}).first.cook_time).to be <= 90
+		end
+		it "finds cook_time 120" do		
+			expect(Recipe.get_recipes({cook_time: 120,servings: 3}).first.cook_time).to be <= 120
+		end
+		it "finds servings 3" do		
+			expect(Recipe.get_recipes({cook_time: 45,servings: 3}).first.servings).to be <= 3
+		end
+		it "finds servings 6" do		
+			expect(Recipe.get_recipes({cook_time: 45,servings: 6}).first.servings).to be <= 6
+		end
+		it "finds servings 10" do		
+			expect(Recipe.get_recipes({cook_time: 45,servings: 10}).first.servings).to be <= 10
+		end
+
+	end
 end

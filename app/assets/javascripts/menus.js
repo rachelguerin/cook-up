@@ -27,6 +27,26 @@ MyMenuApp.MyMenu.prototype.getClassifications = function(){
 	this.classifications = classifications;
 };
 
+MyMenuApp.MyMenu.prototype.exchange = function(position){
+	var recipeBackups = JSON.parse(localStorage.getItem("recipeBackups"));
+	var new_recipe = recipeBackups[0];
+	this.renderRecipe(position,new_recipe);
+	recipeBackups.shift();
+	localStorage.setItem("recipeBackups",JSON.stringify(recipeBackups));
+
+
+};
+
+MyMenuApp.MyMenu.prototype.renderRecipe = function(i,recipe){
+	$($('.js-recipe')[i]).data('type-id',recipe.id);
+	$($('.js-recipe-link')[i]).attr("href","recipes/"+recipe.id);
+	$($('.js-image')[i]).attr("src",recipe.image_url);
+	$($('.js-origin')[i]).attr("href",recipe.source_url);
+	$($('.js-title')[i]).text(recipe.title);
+	$($('.js-minutes')[i]).text(recipe.cook_time);
+	$($('.js-servings')[i]).text(recipe.servings);
+};
+
 MyMenuApp.MyMenu.prototype.render = function(){
 	console.log("Rendering menus: "+ this.cook_time + " minutes, " + this.servings + " serves, classifications "+ this.classifications);
 
@@ -46,18 +66,12 @@ MyMenuApp.MyMenu.prototype.render = function(){
 			$.each(self.info,function(i,recipe){
 
 				if (i<5){
-					$($('.js-recipe')[i]).data('type-id',recipe.id);
-					$($('.js-recipe-link')[i]).attr("href","recipes/"+recipe.id);
-					$($('.js-image')[i]).attr("src",recipe.image_url);
-					$($('.js-origin')[i]).attr("href",recipe.source_url);
-					$($('.js-title')[i]).text(recipe.title);
-					$($('.js-minutes')[i]).text(recipe.cook_time);
-					$($('.js-servings')[i]).text(recipe.servings);
+					my_menu.renderRecipe(i,recipe);
 				} else {
 					recipes.push(recipe);
 				}
 
-				localStorage.setItem("recipeBackups",JSON.stringify(recipe));
+				localStorage.setItem("recipeBackups",JSON.stringify(recipes));
 			});		
 			MyMenuApp.MyMenu.saveAllToLocal();
 		},
@@ -170,6 +184,10 @@ $(document).on("ready",function(){
 	$('.js-save').on('click',function(){
 		MyMenuApp.MyMenu.saveAllToLocal();
 		
+	});
+
+	$('.js-exchange').on('click',function(){
+		my_menu.exchange($(this).data('position-id'));
 	});
 
 });
