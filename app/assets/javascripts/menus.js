@@ -5,6 +5,7 @@ MyMenuApp.MyMenu = function(cook_time, servings, classifications) {
 	this.cook_time = cook_time;
 	this.servings = servings;
 	this.classifications = [2];
+	this.recipes = [];
 };
 
 MyMenuApp.MyMenu.prototype.setCookTime = function(time){
@@ -15,6 +16,16 @@ MyMenuApp.MyMenu.prototype.setServings = function(servings){
 	this.servings = servings;
 };
 
+MyMenuApp.MyMenu.prototype.getClassifications = function(){
+	var classifications = [];
+	$.each($('.js-diet'),function(i,c){
+		console.log(c)
+		if ($(c).hasClass('selected')) {
+			classifications.push($(c).data('type-id'));
+		}
+	});
+	this.classifications = classifications;
+};
 
 MyMenuApp.MyMenu.prototype.render = function(){
 	console.log("Rendering menus: "+ this.cook_time + " minutes, " + this.servings + " serves, classifications "+ this.classifications);
@@ -47,8 +58,8 @@ MyMenuApp.MyMenu.prototype.render = function(){
 				}
 
 				localStorage.setItem("recipeBackups",JSON.stringify(recipe));
-				MyMenuApp.MyMenu.saveAllToLocal();
 			});		
+			MyMenuApp.MyMenu.saveAllToLocal();
 		},
 		error: function(error){
 			console.log("There was an error.");
@@ -145,6 +156,12 @@ $(document).on("ready",function(){
 
 
 	$('.js-diet').on('click',function(){
+		$(this).toggleClass('selected');
+	});
+
+	$('.js-search').on('click',function(){
+		my_menu.getClassifications();
+
 		$('.modal').removeClass('is-active');
 		console.log('calling AJAX'); 
 		my_menu.render();

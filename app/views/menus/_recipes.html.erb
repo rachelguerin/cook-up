@@ -1,8 +1,13 @@
 <div class="menus">
-  <div class="columns"></div>
+  <div class="columns days-of-week">
+  	<div class="column is-2 is-offset-1"><p class="title is-3 is-text-centered">Monday</p></div>
+	<div class="column is-2"><p class="title is-3 is-text-centered">Tuesday</p></div>
+	<div class="column is-2"><p class="title is-3 is-text-centered">Wednesday</p></div>
+	<div class="column is-2"><p class="title is-3 is-text-centered">Thursday</p></div>
+	<div class="column is-2"><p class="title is-3 is-text-centered">Friday</p></div>
+  </div>
 
-  <div class="container">  
-	<div class="columns is-mobile">
+	<div class="columns">
   	
 
 <% @recipes.each_with_index do |r,i| %>
@@ -43,7 +48,7 @@
 
 	  </div>
 <% end %>
-	</div>
+
 </div>
 <!-- <div class="columns">
 	  <div class="column is-offset-2">
