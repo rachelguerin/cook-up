@@ -66,7 +66,7 @@ MyMenuApp.MyMenu.prototype.render = function(){
 			$.each(self.info,function(i,recipe){
 
 				if (i<5){
-					my_menu.renderRecipe(i,recipe);
+					self.renderRecipe(i,recipe);
 				} else {
 					recipes.push(recipe);
 				}
