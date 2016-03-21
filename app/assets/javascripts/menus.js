@@ -101,6 +101,7 @@ MyMenuApp.MyMenu.renderLocalStorage = function(){
 
 MyMenuApp.MyMenu.saveAllToLocal = function(){
 	var recipes = [];
+	var recipe_ids = [];
 	console.log("Saving weekly menu..")
 
 	$.each([1,2,3,4,5],function(i,x){
@@ -114,11 +115,12 @@ MyMenuApp.MyMenu.saveAllToLocal = function(){
 			);
 
 		recipes.push(r);
+		recipe_ids.push(r.id);
 
 	});
 
 	localStorage.setItem("savedRecipes",JSON.stringify(recipes));
-
+	$('.js-shopping').attr("href","/list/"+recipe_ids);
 };
 
 $(document).on("ready",function(){

@@ -1,0 +1,22 @@
+<div class="container">
+	<h2 class="title is-2">Shopping List</h2>
+</div>
+<div class="container">
+	<div class="columns">
+		<div class="column is-6">
+			<div class="box">
+	<% @shopping_list.each do |k,v| %>
+		<h3 class="title is-3"><%=k%></h3>
+
+		<% v.each do |i| %>
+		<p><%="#{'%g' % i[:quantity]} #{i[:unit]} #{i[:ingredient][:name]}"%></p>
+
+		<% end %>
+	<% end %>
+			</div>
+		</div>
+		<div class="column is-6">
+
+		</div>
+	</div>
+</div>

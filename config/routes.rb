@@ -4,7 +4,7 @@ Rails.application.routes.draw do
  
   get '/' => 'menus#home'
 
-  get '/list' => 'shopping_list#list'
+  get '/list/:menu' => 'shopping_list#list'
 
   post '/' => 'menus#search_recipes'
 
