@@ -70,9 +70,9 @@ MyMenuApp.MyMenu.prototype.render = function(){
 				} else {
 					recipes.push(recipe);
 				}
-
-				localStorage.setItem("recipeBackups",JSON.stringify(recipes));
-			});		
+			
+			});	
+			localStorage.setItem("recipeBackups",JSON.stringify(recipes));	
 			MyMenuApp.MyMenu.saveAllToLocal();
 		},
 		error: function(error){
@@ -93,7 +93,7 @@ MyMenuApp.MyMenu.setShoppingList = function(){
 	$('.js-shopping').attr("href","/list/"+recipe_ids);
 };
 
-MyMenuApp.MyMenu.renderLocalStorage = function(){
+MyMenuApp.MyMenu.prototype.renderLocalStorage = function(){
 	var recipes = JSON.parse(localStorage.getItem("savedRecipes"));
 
 	if (recipes != null){
@@ -109,8 +109,10 @@ MyMenuApp.MyMenu.renderLocalStorage = function(){
 			$($('.js-minutes')[i]).text(recipe.cook_time);
 			$($('.js-servings')[i]).text(recipe.servings);
 		})
-		$('.js-image').removeClass("fadeout");
+		$('.js-image').delay(400).removeClass("fadeout");
 
+	} else {
+		this.render();
 	}
 };
 
@@ -141,9 +143,10 @@ MyMenuApp.MyMenu.saveAllToLocal = function(){
 
 $(document).on("ready",function(){
 	
-	MyMenuApp.MyMenu.renderLocalStorage();
+	// MyMenuApp.MyMenu.renderLocalStorage();
 	MyMenuApp.MyMenu.setShoppingList();
 	var my_menu = new MyMenuApp.MyMenu(0,0,[]);
+	my_menu.renderLocalStorage();
 
 	$('.js-go').on('click',function(){
 		$('.js-time-limit').addClass('is-active');
@@ -207,7 +210,6 @@ $(document).on("ready",function(){
 
 
 	$('.js-exchange').on('click',function(){
-		console.log($(this).parent().parent().parent());
 		$(this).parent().parent().parent().toggleClass('flipped');
 		my_menu.exchange($(this).data('position-id'));
 		

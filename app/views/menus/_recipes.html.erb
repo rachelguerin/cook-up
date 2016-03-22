@@ -10,19 +10,19 @@
 	<div class="columns">
   	
 
-<% @recipes.each_with_index do |r,i| %>
+<% [0,1,2,3,4].each_with_index do |r,i| %>
 	<% if i == 0 %>
 	  <div class="column is-2 is-offset-1">
 	<% else %>
 	  <div class="column is-2">
 	<% end %>
-	    <div class="card js-recipe" data-type-id=<%="#{r.id}"%>>
+	    <div class="card js-recipe" data-type-id="">
 
 		  <div class="card-image">
 		    <figure class="image is-4by3">
 		    
 		    <a href="#" data-position-id=<%="#{i}"%> class="icon is-small is-pulled-right js-exchange"><i class="fa fa-times"></i></a>
-		      <a class="js-recipe-link" href=<%="/recipes/#{r.id}"%>><img class="js-image" src=<%="#{r.image_url}"%> alt=""></a>
+		      <a class="js-recipe-link" href="/recipes/"><img class="js-image" src="" alt=""></a>
 		    </figure>
 		  </div>
 		  <div class="card-content">
@@ -30,17 +30,17 @@
 		      <!-- <div class="media-left">  
 		      </div> -->
 		      <div class="media-content">
-		        <p class="title js-title is-5"><%= r.title %></p>
+		        <p class="title js-title is-5"></p>
 		        <p class="subtitle is-6">
 				<!-- <a href="#" class="icon is-small is-pulled-left"><i class="fa fa-heart"></i></a> -->
-		        <a class="js-origin" href=<%="#{r.source_url}"%> target="blank">[origin]</a></p>
+		        <a class="js-origin" href="#" target="blank">[origin]</a></p>
 		      </div>
 		    </div>
 
 		    <div class="content">
-		      Ready in <strong class="js-minutes"><%= r.cook_time %></strong> minutes
+		      Ready in <strong class="js-minutes"></strong> minutes
 		      <br>
-		      Serves <strong class="js-servings"><%= r.servings %></strong> 
+		      Serves <strong class="js-servings"></strong> 
 	    
 		    </div>
 		  </div>  

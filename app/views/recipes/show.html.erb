@@ -26,7 +26,7 @@
 		</figure>
 	  </div>
 	  <div class="box ingredients">
-	  	<h4 class="title is-4">Ingredients for <%= @recipe.servings %></h3>
+	  	<h4 class="title is-4">Ingredients for <%= @recipe.servings %> serves</h3>
 	  	<ul>
 	  	<% @ingredients.each do |i| %>
 		  <li><%= " #{'%g' % i[:quantity]} #{i[:unit]} #{i[:name]}" %></li> 

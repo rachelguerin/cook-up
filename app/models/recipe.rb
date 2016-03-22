@@ -25,15 +25,17 @@ class Recipe < ActiveRecord::Base
     end
 
     def self.get_recipes(params)
-
-
-      recipes = Recipe.where(cook_time: 0..params[:cook_time].to_f, 
+      if params[:cook_time].to_f > 0
+        recipes = Recipe.where(cook_time: 0..params[:cook_time].to_f, 
                     servings: 0..params[:servings].to_f)
-
-      if !params[:classifications].nil?      
-        classifications = params[:classifications].map {|c| c.to_i}
-        recipes = recipes.select {|r| r.classifications.ids & classifications == classifications }
+        if !params[:classifications].nil?      
+          classifications = params[:classifications].map {|c| c.to_i}
+          recipes = recipes.select {|r| r.classifications.ids & classifications == classifications }
+        end
+      else
+        recipes = Recipe.order("RANDOM()").limit(20)
       end
+      
       recipes
 
     end
