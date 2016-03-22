@@ -22,7 +22,7 @@
 		<p class="is-5"><strong><%=k%></strong></p>
 		
 		<% v.each do |i| %>
-		<p><%="#{'%g' % i[:quantity]} #{i[:unit]} #{i[:ingredient][:name]}"%></p>
+		<p class="js-sl-item"><%="#{'%g' % i[:quantity]} #{i[:unit]} #{i[:ingredient][:name]}"%></p>
 
 		<% end %>
 	<% end %>
