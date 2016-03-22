@@ -27,11 +27,39 @@ MyMenuApp.MyMenu.prototype.getClassifications = function(){
 	this.classifications = classifications;
 };
 
+MyMenuApp.MyMenu.prototype.refillBackup = function(){
+	var self = this; //so we have THIS this, not the function this once we get to ajax
+
+	$.ajax({
+		type:'POST',
+		url: "/",
+		data: {cook_time: this.cook_time, servings: this.servings, classifications: this.classifications},
+		success: function (response) {	
+			self.info = response;
+
+			var recipes = [];
+
+			$.each(self.info,function(i,recipe){
+				recipes.push(recipe);
+			});	
+			localStorage.setItem("recipeBackups",JSON.stringify(recipes));	
+		},
+		error: function(error){
+			console.log("There was an error.");
+			console.log(error);
+		}
+	});
+};
+
 MyMenuApp.MyMenu.prototype.exchange = function(position){
 	var recipeBackups = JSON.parse(localStorage.getItem("recipeBackups"));
 	var new_recipe = recipeBackups[0];
 	this.renderRecipe(position,new_recipe);
 	recipeBackups.shift();
+	if (recipeBackups.length == 0){
+		this.refillBackup();
+	}
+
 	localStorage.setItem("recipeBackups",JSON.stringify(recipeBackups));
 	MyMenuApp.MyMenu.setShoppingList();
 
