@@ -132,4 +132,10 @@ RSpec.describe Recipe do
 		end
 
 	end
+
+	# describe "returns shopping list" do
+	# 	it "finds food type" do
+	# 		expect(Recipe.get_shopping_list("1,2")).to 
+	# 	end
+	# end
 end

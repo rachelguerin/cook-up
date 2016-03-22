@@ -33,7 +33,7 @@ MyMenuApp.MyMenu.prototype.exchange = function(position){
 	this.renderRecipe(position,new_recipe);
 	recipeBackups.shift();
 	localStorage.setItem("recipeBackups",JSON.stringify(recipeBackups));
-
+	MyMenuApp.MyMenu.setShoppingList();
 
 };
 
@@ -82,6 +82,17 @@ MyMenuApp.MyMenu.prototype.render = function(){
 	});
 };
 
+MyMenuApp.MyMenu.setShoppingList = function(){
+	var recipe_ids = [];
+	console.log("Set shopping list..");
+
+	$.each([1,2,3,4,5],function(i,x){
+		recipe_ids.push($($('.js-recipe')[i]).data('type-id'));
+	});
+
+	$('.js-shopping').attr("href","/list/"+recipe_ids);
+};
+
 MyMenuApp.MyMenu.renderLocalStorage = function(){
 	var recipes = JSON.parse(localStorage.getItem("savedRecipes"));
 
@@ -120,12 +131,14 @@ MyMenuApp.MyMenu.saveAllToLocal = function(){
 	});
 
 	localStorage.setItem("savedRecipes",JSON.stringify(recipes));
-	$('.js-shopping').attr("href","/list/"+recipe_ids);
+	// $('.js-shopping').attr("href","/list/"+recipe_ids);
+	MyMenuApp.MyMenu.setShoppingList();
 };
 
 $(document).on("ready",function(){
 	
 	MyMenuApp.MyMenu.renderLocalStorage();
+	MyMenuApp.MyMenu.setShoppingList();
 	var my_menu = new MyMenuApp.MyMenu(0,0,[]);
 
 	$('.js-go').on('click',function(){
