@@ -10,3 +10,9 @@ MyMenuApp.Recipe = function(id,image_url,source_url,title,cook_time,servings){
 	this.servings = servings;
 
 };
+
+$(document).on("ready",function(){
+	$('.method li').on('click', function(){
+		$(this).toggleClass('strikethrough');
+	});
+});

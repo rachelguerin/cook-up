@@ -26,7 +26,7 @@
 		</figure>
 	  </div>
 	  <div class="box ingredients">
-	  	<h4 class="title is-4">Ingredients</h3>
+	  	<h4 class="title is-4">Ingredients for <%= @recipe.servings %></h3>
 	  	<ul>
 	  	<% @ingredients.each do |i| %>
 		  <li><%= " #{'%g' % i[:quantity]} #{i[:unit]} #{i[:name]}" %></li> 
@@ -36,8 +36,12 @@
 	</div>
 	<div class="column is-8">
 	  <div class="box">
-
-	  	<h2 class="title is-2"><%= @recipe.title %></h2>
+		<div class="container">
+	  		<h3 class="title is-3 is-pulled-right"><%= @recipe.cook_time %> minutes</h3>
+	  	</div>
+		<div class="container">
+	  		<h2 class="title is-2"><%= @recipe.title %></h2> 
+	  	</div>
 	  </div>
 	  <div class="box">
 		<div class="method">
