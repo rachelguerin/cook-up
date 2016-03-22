@@ -3,3 +3,12 @@
 .card:hover {
 	box-shadow: 5px 5px 5px #888888;
 }
+
+.card {
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.card.flipped {
+	transform:rotateY( 360deg );
+}

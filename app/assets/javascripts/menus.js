@@ -205,8 +205,12 @@ $(document).on("ready",function(){
 		
 	});
 
+
 	$('.js-exchange').on('click',function(){
+		console.log($(this).parent().parent().parent());
+		$(this).parent().parent().parent().toggleClass('flipped');
 		my_menu.exchange($(this).data('position-id'));
+		
 	});
 
 });
