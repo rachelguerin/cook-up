@@ -11,13 +11,11 @@
 		        <h1 class="title">Do you have any dietary restrictions?</h1>	    
 			  		<% @classifications.each do |classification| %>
 			   		 
-			  		<a href="#" class="button is-warning js-diet" data-type-id=<%="#{classification.id}"%> ><%=classification.name%></a>
-					<br><br>
+			  		<a href="#" class="button is-warning js-diet" data-type-id=<%="#{classification.id}"%> ><%=classification.name%></a>&nbsp;
+					
 					<% end %>
-
-			  </div>
-			  <div class="footer">Continue button goes here
-				<a href="#" class="button is-success js-search">Find Recipes</a>
+					<br><br>
+				<a href="#" class="button is-success is-inverted js-search">Find Recipes</a>
 			  </div>
 		  	</div>
 		  </section>

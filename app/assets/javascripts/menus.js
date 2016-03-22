@@ -97,6 +97,9 @@ MyMenuApp.MyMenu.renderLocalStorage = function(){
 	var recipes = JSON.parse(localStorage.getItem("savedRecipes"));
 
 	if (recipes != null){
+		//fadeout
+		$('.js-image').addClass("fadeout");
+
 		$.each(recipes,function(i,recipe){
 			$($('.js-recipe')[i]).data('type-id',recipe.id);
 			$($('.js-recipe-link')[i]).attr("href","recipes/"+recipe.id);
@@ -106,6 +109,7 @@ MyMenuApp.MyMenu.renderLocalStorage = function(){
 			$($('.js-minutes')[i]).text(recipe.cook_time);
 			$($('.js-servings')[i]).text(recipe.servings);
 		})
+		$('.js-image').removeClass("fadeout");
 
 	}
 };
