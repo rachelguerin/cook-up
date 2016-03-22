@@ -12,15 +12,15 @@
 
 
 <div class="container">
-	<h2 class="title is-2">Shopping List</h2>
+	<h2 class="title is-2">Shopping List</h2><%= render 'recipes' %>
 </div>
 <div class="container">
 	<div class="columns">
-		<div class="column is-6">
+		<div class="column is-4">
 			<div class="box">
 	<% @shopping_list.each do |k,v| %>
-		<h3 class="title is-3"><%=k%></h3>
-
+		<p class="is-5"><strong><%=k%></strong></p>
+		
 		<% v.each do |i| %>
 		<p><%="#{'%g' % i[:quantity]} #{i[:unit]} #{i[:ingredient][:name]}"%></p>
 
@@ -28,8 +28,22 @@
 	<% end %>
 			</div>
 		</div>
-		<div class="column is-6">
+		<div class="column is-4">
+			<div class="box">
+	<% @shopping_list_condiments.each do |k,v| %>
+		<p class="is-5"><strong><%=k%></strong></p>
+		
+		<% v.each do |i| %>
+		<p><%="#{'%g' % i[:quantity]} #{i[:unit]} #{i[:ingredient][:name]}"%></p>
 
+		<% end %>
+	<% end %>
+			</div>
+		</div>
+		<div class="column is-4">
+			<div class="box">
+				
+			</div>
 		</div>
 	</div>
 </div>
