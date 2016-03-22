@@ -2,6 +2,7 @@ class MenusController < ApplicationController
 	def home
 		@recipes = Recipe.get_any_5
 		@classifications = Classification.all
+		@days = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
 	end
 
 	def search_recipes

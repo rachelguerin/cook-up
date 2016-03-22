@@ -1,23 +1,23 @@
 <div class="menus">
-  <div class="columns days-of-week">
+  <!-- <div class="columns days-of-week">
   	<div class="column is-2 is-offset-1"><p class="title is-3 is-text-centered">Monday</p></div>
 	<div class="column is-2"><p class="title is-3 is-text-centered">Tuesday</p></div>
 	<div class="column is-2"><p class="title is-3 is-text-centered">Wednesday</p></div>
 	<div class="column is-2"><p class="title is-3 is-text-centered">Thursday</p></div>
 	<div class="column is-2"><p class="title is-3 is-text-centered">Friday</p></div>
-  </div>
+  </div> -->
+	<div class="columns"></div>
 
-	<div class="columns">
-  	
-
+<div class="columns">
 <% [0,1,2,3,4].each do |i| %>
 	<% if i == 0 %>
 	  <div class="column is-2 is-offset-1">
 	<% else %>
 	  <div class="column is-2">
 	<% end %>
+		
 	    <div class="card js-recipe" data-type-id="">
-
+		  <p class="title is-3 is-text-centered"><%=@days[i]%></p>
 		  <div class="card-image">
 		    <figure class="image is-4by3">
 		    
@@ -30,10 +30,10 @@
 		      <!-- <div class="media-left">  
 		      </div> -->
 		      <div class="media-content">
-		        <p class="title js-title is-5"></p>
-		        <p class="subtitle is-6">
+		        <div class="title js-title is-5"></div>
+		        <div class="subtitle is-6">
 				<!-- <a href="#" class="icon is-small is-pulled-left"><i class="fa fa-heart"></i></a> -->
-		        <a class="js-origin" href="#" target="blank">[origin]</a></p>
+		        <a class="js-origin" href="#" target="blank">[origin]</a></div>
 		      </div>
 		    </div>
 
@@ -48,8 +48,8 @@
 
 	  </div>
 <% end %>
-
 </div>
+
 <div class="container">
 	<div class="notification is-text-centered">
 	    <a class="button is-success js-save">

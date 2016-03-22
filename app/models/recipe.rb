@@ -40,24 +40,6 @@ class Recipe < ActiveRecord::Base
 
     end
 
-    # def self.get_shopping_list(menu)
-    #   recipe_ids = menu.split(",").map { |s| s.to_i }
-    #   shopping_list = []
-
-    #   ingredient_ids = Quantity.select("ingredient_id").where(recipe_id: recipe_ids).group("ingredient_id")
-    #   i_s = Ingredient.where(id: ingredient_ids.map {|i| i.ingredient_id}).order(:food_type)
-
-    #   i_s.each do |i|
-    #     total_qty = Quantity.where(recipe_id: recipe_ids, ingredient_id: i.id).sum(:quantity)
-    #     unit = Quantity.where(ingredient_id: i.id).first.unit
-
-    #     i.food_type
-
-    #     shopping_list << {ingredient: i, quantity: total_qty, unit: unit}
-    #   end  
-
-    #   shopping_list
-    # end
 
     def self.get_shopping_list(menu)
       recipe_ids = menu.split(",").map { |s| s.to_i }
@@ -67,6 +49,7 @@ class Recipe < ActiveRecord::Base
         .where(id:  
           Quantity.select(:ingredient_id)
           .where(recipe_id: recipe_ids)
+          .where.not(ingredient_id: Ingredient.where(name: 'water').ids)
           .group(:ingredient_id).map{|i| i.ingredient_id})
         .group(:food_type)
 

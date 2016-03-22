@@ -1,8 +1,7 @@
-$(document).on("ready",function(){ 
-	$('#card').on('click',function(){
-		$('#card').toggleClass('flipped');
-		
-		// $('#card').removeClass('flipped');
-	});
+$(document).on("ready",function(){  
+	$('.card-image').hover(function() {
+    	$('.content').toggle();
+
+  });
 
 });

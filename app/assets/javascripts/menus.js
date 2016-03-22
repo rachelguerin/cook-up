@@ -143,11 +143,10 @@ MyMenuApp.MyMenu.saveAllToLocal = function(){
 
 $(document).on("ready",function(){
 	
-	// MyMenuApp.MyMenu.renderLocalStorage();
-	MyMenuApp.MyMenu.setShoppingList();
 	var my_menu = new MyMenuApp.MyMenu(0,0,[]);
 	my_menu.renderLocalStorage();
-
+	MyMenuApp.MyMenu.setShoppingList();
+	
 	$('.js-go').on('click',function(){
 		$('.js-time-limit').addClass('is-active');
 	});
@@ -193,6 +192,7 @@ $(document).on("ready",function(){
 
 	$('.js-diet').on('click',function(){
 		$(this).toggleClass('selected');
+		$(this).toggleClass('is-inverted');
 	});
 
 	$('.js-search').on('click',function(){
@@ -208,11 +208,14 @@ $(document).on("ready",function(){
 		
 	});
 
-
 	$('.js-exchange').on('click',function(){
 		$(this).parent().parent().parent().toggleClass('flipped');
 		my_menu.exchange($(this).data('position-id'));
 		
+	});
+
+	$('.js-recipe').hover(function(){
+		$(this).children('.card-content').children('.content').slideToggle();
 	});
 
 });

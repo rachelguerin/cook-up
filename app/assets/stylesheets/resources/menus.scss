@@ -2,14 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.card {
-	width: 200px !important;
+.container.recipes {
+	margin: 0;
 }
 
-.js-diet-vegan {
-	background-color: blue;
-}
-
-.days-of-week.columns {
-	margin-bottom: 0;
-}

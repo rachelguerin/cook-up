@@ -7,8 +7,22 @@
 .card {
   transform-style: preserve-3d;
   transition: transform 1s;
+  border-radius: 3px;
 }
 
 .card.flipped {
 	transform:rotateY( 360deg );
+}
+
+.card-content {
+	// height: 120px !important;
+}
+
+.card-content .content {
+	display: none;
+}
+
+p.title {
+	padding-top: 6px;
+	margin-bottom: 6px !important;
 }
