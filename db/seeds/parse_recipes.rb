@@ -2,20 +2,36 @@ require 'unirest'
 require 'pry'
 require 'json'
 
-ids = ["637663","638534","642293","662069","634582","638409","641893","647142",
-	"657651","716627","665294","642546","636608","642540","646043","633711",
-	"664553","642121","655573","643225","646051","649512","650112","663108",
-	"639658","642929","716354","632807","632983","641123","638125","638086",
-	"637876","627876","629963","634476","634891","636488","637999","638002"]
+url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"
+recipe_path = "findByIngredients?ingredients="
 
-ids.uniq!
+key = "HlSoVMlxQOmshuOZuzLgKhXBfYTdp1PfjBCjsn69m9h0EsZe88"
+
+searches = ["ground+beef","eggplant","tomato","chicken","chickpeas"]
+
+rest = "&limitLicense=true&number=20&ranking=1"
+
+ids = []
+
+searches.each do |ingredient|
+	response = Unirest.get url+recipe_path+ingredient+rest,
+	  headers:{
+	    "X-Mashape-Key" => key,
+	    "Accept" => "application/json"
+	  }
+
+
+	response.body.each do |r|
+		ids << r["id"]
+	end
+end
 
 results = []
 ids.each do |id|
 
-	response = Unirest.get "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+id+"/information",
+	response = Unirest.get url+id.to_s+"/information",
 	  headers:{
-	    "X-Mashape-Key" => "HlSoVMlxQOmshuOZuzLgKhXBfYTdp1PfjBCjsn69m9h0EsZe88"
+	    "X-Mashape-Key" => key
 	  }
 
 	recipe = {}

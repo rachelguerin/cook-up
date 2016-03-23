@@ -22,7 +22,7 @@ recipes['results'].each do |a|
 	i = a['ingredients']
 	i.each do |x|
 		r.quantities.create(
-			ingredient: get_ingredient(x['name'],x['food_type']),
+			ingredient: Ingredient.get_ingredient(x['name'],x['food_type']),
 			quantity: x['quantity'],
 			unit: x['unit']
 			)
