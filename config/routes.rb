@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   post '/' => 'menus#search_recipes'
 
+  post '/shopping_list' => 'shopping_list#shopping_list'
+
 end

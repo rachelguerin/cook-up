@@ -1,0 +1,7 @@
+Your Weekly Menu
+----------------
+
+<% @recipes.each do |r| %>
+<%= r.title %> Ready in <%=r.cook_time %> minutes, serves <%=r.servings %>.
+Go to: http://www.cook-up.eu/recipes/<%=r.id%> for details.
+<% end %>

@@ -40,7 +40,6 @@ class Recipe < ActiveRecord::Base
 
     end
 
-
     def self.get_shopping_list(menu)
       recipe_ids = menu.split(",").map { |s| s.to_i }
       shopping_list = {}

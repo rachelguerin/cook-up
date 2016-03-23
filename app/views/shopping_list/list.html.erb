@@ -12,7 +12,8 @@
 
 
 <div class="container">
-	<h2 class="title is-2">Shopping List</h2><%= render 'recipes' %>
+	<h2 class="title is-2">Shopping List</h2>
+	<p><%= render 'recipes' %></p> 
 </div>
 <div class="container">
 	<div class="columns">
@@ -42,7 +43,19 @@
 		</div>
 		<div class="column is-4">
 			<div class="box">
-				
+				<form action="/shopping_list" method="POST">
+					<p class="control has-icon">
+					  <input class="input" type="email" name="email" placeholder="Email">
+					  <i class="fa fa-envelope"></i>
+					</p>
+					<input type="hidden" >
+					<p class="control">
+					  <button class="button is-success">
+					    Send Shopping List
+					  </button>
+					</p>
+					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+				</form>
 			</div>
 		</div>
 	</div>

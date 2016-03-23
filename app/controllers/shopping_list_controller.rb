@@ -11,4 +11,9 @@ class ShoppingListController < ApplicationController
 		end
 		
 	end
+
+	def shopping_list
+		MenuMailer.shopping_list("21,23,24,25,26",params[:email]).deliver_now
+		redirect_to '/'
+	end	
 end
