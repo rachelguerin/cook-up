@@ -15,48 +15,56 @@
 	<h2 class="title is-2">Shopping List</h2>
 	<p><%= render 'recipes' %></p> 
 </div>
+
 <div class="container">
 	<div class="columns">
+
 		<div class="column is-4">
 			<div class="box">
 	<% @shopping_list.each do |k,v| %>
-		<p class="is-5"><strong><%=k%></strong></p>
+		<div><p class="is-5 js-sl-heading"><strong><%=k%></strong></p>
 		
 		<% v.each do |i| %>
 		<p class="js-sl-item"><%="#{'%g' % i[:quantity]} #{i[:unit]} #{i[:ingredient][:name]}"%></p>
 
-		<% end %>
+		<% end %></div>
 	<% end %>
 			</div>
 		</div>
+
+
 		<div class="column is-4">
 			<div class="box">
 	<% @shopping_list_condiments.each do |k,v| %>
-		<p class="is-5"><strong><%=k%></strong></p>
+		<div><p class="is-5 js-sl-heading"><strong><%=k%></strong></p>
 		
 		<% v.each do |i| %>
-		<p><%="#{'%g' % i[:quantity]} #{i[:unit]} #{i[:ingredient][:name]}"%></p>
+		<p class="js-sl-item"><%="#{'%g' % i[:quantity]} #{i[:unit]} #{i[:ingredient][:name]}"%></p>
 
-		<% end %>
+		<% end %></div>
 	<% end %>
 			</div>
 		</div>
+
 		<div class="column is-4">
 			<div class="box">
 				<form action="/shopping_list" method="POST">
+				<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 					<p class="control has-icon">
 					  <input class="input" type="email" name="email" placeholder="Email">
 					  <i class="fa fa-envelope"></i>
 					</p>
-					<input type="hidden" >
+					<input type="hidden" name="shopping_list" value="1234">
+					<input type="hidden" name="menu" value=<%="#{@menu}"%>>
 					<p class="control">
-					  <button class="button is-success">
+					  <button class="button is-success js-submit">
 					    Send Shopping List
 					  </button>
 					</p>
-					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 				</form>
 			</div>
 		</div>
+
+
 	</div>
 </div>

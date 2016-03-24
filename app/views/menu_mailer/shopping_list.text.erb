@@ -1,7 +1,17 @@
-Your Weekly Menu
-----------------
+Your Weekly Shopping List
+-------------------------
+<% @shopping_list.each do |k,v| %>
+**<%=k%>
+	<% v.each do |i| %>
+		<%=i%>
+	<% end %>
+	
+<% end %>
 
+Recipes
+-------
 <% @recipes.each do |r| %>
-<%= r.title %> Ready in <%=r.cook_time %> minutes, serves <%=r.servings %>.
+<%= r.title %>. Ready in <%=r.cook_time %> minutes, serves <%=r.servings %>.
 Go to: http://www.cook-up.eu/recipes/<%=r.id%> for details.
+
 <% end %>

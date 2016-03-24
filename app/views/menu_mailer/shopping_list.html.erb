@@ -1,18 +1,22 @@
-<h2>Your weekly menu</h2>
-
+<div class="container">
+<h2>Your weekly shopping list</h2>
+<% @shopping_list.each do |k,v| %>
+		<strong><%=k%></strong><br>	
+		<% v.each do |i| %>
+			<%=i%><br>
+		<% end %>
+<br>
+	<% end %>
+</div>
+<div class="container">
 <% @recipes.each do |r| %>
 	      <img class="js-image" src=<%="https://webknox.com/recipeImages/#{r.original_id.to_s}-240x150.jpg"%> alt=<%="#{r.title}"%>> 
-<% end %>    
-<br>
-<% @recipes.each do |r| %>
+
 	        <strong><%=r.title%></strong> 
-<% end %>	
-<br>
-<% @recipes.each do |r| %>	       
+      
 	        <a class="js-origin" href=<%="#{r.source_url}"%> target="blank">[origin]</a> 
-<% end %>
-<br>
-<% @recipes.each do |r| %>	        
+        
 		      Ready in <strong class="js-minutes"><%=r.cook_time %></strong> minutes,
-		      serves <strong class="js-servings"><%=r.servings %></strong> 
+		      serves <strong class="js-servings"><%=r.servings %></strong> <br>
 <% end %>	  
+</div>

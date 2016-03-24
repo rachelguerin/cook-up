@@ -4,8 +4,7 @@
 MyMenuApp.MyMenu = function(cook_time, servings, classifications) {
 	this.cook_time = cook_time;
 	this.servings = servings;
-	this.classifications = [2];
-	this.recipes = [];
+	this.classifications = classifications;
 };
 
 MyMenuApp.MyMenu.prototype.setCookTime = function(time){
