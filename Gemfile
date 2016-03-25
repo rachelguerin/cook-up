@@ -42,7 +42,15 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails', '~> 4.5'
+  gem 'capybara', '~> 2.5'
+  gem 'rack'
+  gem 'rack-test'
+end
 
+group :test do
+  gem 'database_cleaner', '~> 1.5'
+  gem 'faker', '~> 1.6.1'
 end
 
 group :development do

@@ -75,11 +75,18 @@ RSpec.describe Recipe do
 							source_url: "https://thisisthesourceurl"
 						)}
 		let(:i1) {Ingredient.create(name: "1 ingredient",
-							food_type: "#{rand(4)} type",
-							auto_list: true
+							food_type: "#{rand(4)} type"
 						)}
 
 		it "returns 5" do
+			5.times.each {Recipe.create(title: "Recipe 1",
+							cook_time: rand(120), 
+							servings: rand(8), 
+							method: "1 cook it and eat it", 
+							image_url:"https://spoonacular.com/recipeImages/Cheesy-Grits-Casserole-637663.jpg", 
+							original_id: rand(999999),
+							source_url: "https://thisisthesourceurl"
+						)}
 			expect(Recipe.get_any_5.count).to eq(5)
 		end
 
@@ -111,31 +118,72 @@ RSpec.describe Recipe do
 	end
 
 	describe "returns recipes within search parameters" do
+		before :each do 
+			25.times.each {Recipe.create(title: "Recipe 1",
+							cook_time: rand(120), 
+							servings: rand(8), 
+							method: "1 cook it and eat it", 
+							image_url:"https://spoonacular.com/recipeImages/Cheesy-Grits-Casserole-637663.jpg", 
+							original_id: rand(999999),
+							source_url: "https://thisisthesourceurl"
+						)}	
+		end
 		
 		it "finds cook_time 45" do		
 			expect(Recipe.get_recipes({cook_time: 45,servings: 3}).first.cook_time).to be <= 45
 		end
-		it "finds cook_time 90" do		
+		it "finds cook_time 90" do	
 			expect(Recipe.get_recipes({cook_time: 90,servings: 3}).first.cook_time).to be <= 90
 		end
-		it "finds cook_time 120" do		
+		it "finds cook_time 120" do	
 			expect(Recipe.get_recipes({cook_time: 120,servings: 3}).first.cook_time).to be <= 120
 		end
-		it "finds servings 3" do		
+		it "finds servings 3" do	
 			expect(Recipe.get_recipes({cook_time: 45,servings: 3}).first.servings).to be <= 3
 		end
-		it "finds servings 6" do		
+		it "finds servings 6" do	
 			expect(Recipe.get_recipes({cook_time: 45,servings: 6}).first.servings).to be <= 6
 		end
-		it "finds servings 10" do		
+		it "finds servings 10" do	
 			expect(Recipe.get_recipes({cook_time: 45,servings: 10}).first.servings).to be <= 10
 		end
 
 	end
 
-	# describe "returns shopping list" do
-	# 	it "finds food type" do
-	# 		expect(Recipe.get_shopping_list("1,2")).to 
-	# 	end
-	# end
+	describe "get_shopping_list" do
+		it "returns all shopping list items by food type" do
+			5.times.each {Recipe.create(title: "Recipe",
+							cook_time: rand(120), 
+							servings: rand(8), 
+							method: "1 cook it and eat it", 
+							image_url:"https://spoonacular.com/recipeImages/Cheesy-Grits-Casserole-637663.jpg", 
+							original_id: rand(999999),
+							source_url: "https://thisisthesourceurl"
+						)}
+			(0..2).each {|i| Ingredient.create(name: "Ingredient #{i}",
+							food_type: "1 type"
+						)}
+			(0..2).each {|i| Ingredient.create(name: "Ingredient #{i}",
+							food_type: "2 type"
+						)}
+
+			Recipe.first.quantities.create(ingredient: Ingredient.first, quantity: 1, unit: 'units')
+			Recipe.first.quantities.create(ingredient: Ingredient.second, quantity: 1, unit: 'units')
+			
+			Recipe.second.quantities.create(ingredient: Ingredient.second, quantity: 1, unit: 'units')
+			Recipe.second.quantities.create(ingredient: Ingredient.third, quantity: 1, unit: 'units')
+			
+			Recipe.third.quantities.create(ingredient: Ingredient.third, quantity: 1, unit: 'units')
+			Recipe.third.quantities.create(ingredient: Ingredient.fourth, quantity: 1, unit: 'units')
+			
+			Recipe.fourth.quantities.create(ingredient: Ingredient.fourth, quantity: 1, unit: 'units')
+			Recipe.fourth.quantities.create(ingredient: Ingredient.first, quantity: 1, unit: 'units')
+
+			menus = Recipe.first.id.to_s + "," + Recipe.second.id.to_s + "," + Recipe.third.id.to_s + "," + Recipe.fourth.id.to_s
+	
+			expect(Recipe.get_shopping_list(menus)["1 type"].first[:quantity]).to be(2.0)
+			expect(Recipe.get_shopping_list(menus)["2 type"].first[:quantity]).to be(2.0)
+			
+		end
+	end
 end

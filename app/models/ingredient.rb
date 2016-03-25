@@ -6,7 +6,7 @@ class Ingredient < ActiveRecord::Base
 	def self.get_ingredient(name, food_type)
 		i = Ingredient.where(name: name).first
 		if i == nil
-			i = Ingredient.create(name: name, food_type: food_type, auto_list: true)
+			i = Ingredient.create(name: name, food_type: food_type)
 		end
 		i
 	end
