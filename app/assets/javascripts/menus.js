@@ -61,6 +61,7 @@ MyMenuApp.MyMenu.prototype.exchange = function(position){
 
 	localStorage.setItem("recipeBackups",JSON.stringify(recipeBackups));
 	MyMenuApp.MyMenu.setShoppingList();
+	MyMenuApp.MyMenu.setRecipeCardHeight();
 
 };
 
@@ -171,15 +172,15 @@ MyMenuApp.MyMenu.saveAllToLocal = function(){
 MyMenuApp.MyMenu.setRecipeCardHeight = function(){
 	var maxHeight = 0
 	$.each($('.js-recipe'),function(i,v){
-		if ($('.js-recipe').height() > maxHeight){
-			maxHeight = $('.js-recipe').height();
+		if ($(v).height() > maxHeight){
+			maxHeight = $(v).height();
 		}
 	});
 
 	$.each($('.js-recipe'),function(i,v){
 		$(v).height(maxHeight);
 	});
-	
+
 };
 
 
@@ -256,9 +257,9 @@ $(document).on("ready",function(){
 		
 	});
 
-	// $('.js-recipe').hover(function(){
-	// 	$(this).children('.card-content').children('.content').slideToggle();
-	// });
+	$('.js-recipe').hover(function(){
+		$(this).children('.card-content').children('.media').children('.media-content').children('.title').toggleClass('hilight');
+	});
 
 	MyMenuApp.MyMenu.setRecipeCardHeight();
 

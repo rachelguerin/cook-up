@@ -1,7 +1,11 @@
 @import "bulma/components/components";
 
-.card:hover {
-	box-shadow: 5px 5px 5px #888888;
+// .card:hover {
+// 	box-shadow: 5px 5px 5px #888;
+// }
+
+.title.hilight {
+	color: green !important;
 }
 
 .card {
@@ -14,13 +18,10 @@
 	transform:rotateY( 360deg );
 }
 
-.card-content {
-	// height: 120px !important;
-}
 
-// .card-content .content {
-// 	display: none;
-// }
+.card-content .js-title.hilight {
+	color: blue;
+}
 
 p.title {
 	padding-top: 6px;
