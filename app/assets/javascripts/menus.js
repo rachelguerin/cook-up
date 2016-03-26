@@ -63,6 +63,8 @@ MyMenuApp.MyMenu.prototype.exchange = function(position){
 	MyMenuApp.MyMenu.setShoppingList();
 	MyMenuApp.MyMenu.setRecipeCardHeight();
 
+	$('.js-save').removeClass('is-disabled');
+
 };
 
 MyMenuApp.MyMenu.prototype.renderRecipe = function(i,recipe){
@@ -138,6 +140,7 @@ MyMenuApp.MyMenu.prototype.renderLocalStorage = function(){
 			$($('.js-servings')[i]).text(recipe.servings);
 		})
 		$('.js-image').delay(400).removeClass("fadeout");
+		$('.js-save').addClass('is-disabled');
 
 	} else {
 		this.render();
@@ -165,7 +168,6 @@ MyMenuApp.MyMenu.saveAllToLocal = function(){
 	});
 
 	localStorage.setItem("savedRecipes",JSON.stringify(recipes));
-	// $('.js-shopping').attr("href","/list/"+recipe_ids);
 	MyMenuApp.MyMenu.setShoppingList();
 };
 
@@ -192,6 +194,7 @@ $(document).on("ready",function(){
 	
 	$('.js-go').on('click',function(){
 		$('.js-time-limit').addClass('is-active');
+		$('.js-save').removeClass('is-disabled');
 	});
 
 	$('.modal-background, .modal-close').on('click',function(){
@@ -248,6 +251,8 @@ $(document).on("ready",function(){
 
 	$('.js-save').on('click',function(){
 		MyMenuApp.MyMenu.saveAllToLocal();
+		$('.js-save').addClass('is-disabled');
+		alert('Your menu has been saved.');
 		
 	});
 

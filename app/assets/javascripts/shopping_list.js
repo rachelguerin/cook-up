@@ -3,7 +3,6 @@
 
 
 
-
 $(document).on("ready",function(){
 	$('p.js-sl-item').on('click', function(){
 		$(this).toggleClass('strikethrough');
@@ -23,6 +22,10 @@ $(document).on("ready",function(){
 			}
 		});	
 		$("input[name='shopping_list']").attr("value",JSON.stringify(sl_items_needed))
-		console.log(sl_items_needed);
+		localStorage.setItem("email",$("input[name='email']").val());
 	});
+
+	if (localStorage.getItem("email") != 'undefined'){
+		$("input[name='email']").val(localStorage.getItem("email"));
+	}
 });
