@@ -6,7 +6,15 @@
 	margin: 0;
 }
 
-.js-save.selected {
-	background: blue;
+.js-save-menus {
+	display: none;
+	position: absolute;
+	top: 50px;
+    right: 114px;
+    border: 1px solid #fff;
+    width: 283px;
 }
 
+.js-save-menus li {
+	margin: 2px;
+}

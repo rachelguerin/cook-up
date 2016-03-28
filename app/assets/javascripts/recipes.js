@@ -8,7 +8,6 @@ MyMenuApp.Recipe = function(id,image_url,source_url,title,cook_time,servings){
 	this.title = title;
 	this.cook_time = cook_time;
 	this.servings = servings;
-
 };
 
 $(document).on("ready",function(){
