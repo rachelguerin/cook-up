@@ -30,8 +30,8 @@ MyMenuApp.MyMenu.prototype.refillBackup = function(){
 	var self = this; //so we have THIS this, not the function this once we get to ajax
 
 	$.ajax({
-		type:'POST',
-		url: "/",
+		type:'GET',
+		url: "/menus",
 		data: {cook_time: this.cook_time, servings: this.servings, classifications: this.classifications},
 		success: function (response) {	
 			self.info = response;
@@ -83,8 +83,8 @@ MyMenuApp.MyMenu.prototype.render = function(){
 	var self = this; //so we have THIS this, not the function this once we get to ajax
 
 	$.ajax({
-		type:'POST',
-		url: "/",
+		type:'GET',
+		url: "/menus",
 		data: {cook_time: this.cook_time, servings: this.servings, classifications: this.classifications},
 		success: function (response) {	
 			self.info = response;

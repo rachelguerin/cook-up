@@ -43,9 +43,8 @@ group :development, :test do
   gem 'guard-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '~> 4.5'
-  gem 'capybara', '~> 2.5'
-  gem 'rack'
-  gem 'rack-test'
+  gem 'capybara'
+  gem "chromedriver-helper", "1.0.0"
 end
 
 group :test do
