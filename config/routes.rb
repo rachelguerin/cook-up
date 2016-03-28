@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   resources :recipes, only: [:index, :show]
 
-  get '/list/:menu' => 'shopping_list#list'
+  get '/shopping_list/:menu' => 'shopping_list#index'
 
   get '/menus' => 'menus#search_recipes'
 

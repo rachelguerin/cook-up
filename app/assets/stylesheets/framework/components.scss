@@ -1,18 +1,25 @@
 @import "bulma/components/components";
 
-.card:hover {
-	box-shadow: 5px 5px 5px #888;
-}
-
 .title.hilight {
 	color: green !important;
 	
 }
 
 .card {
+  // position: relative;
   transform-style: preserve-3d;
   transition: transform 1s;
   border-radius: 3px;
+ 	&:hover{
+ 		box-shadow: 5px 5px 5px #888;
+ 	// 	.card-content{
+		// 	top: 100px;
+		// 	transition: top 0.3s ease; 
+		// }
+		// .content {
+		// 	display: block;
+		// }
+	}
 }
 
 .card.flipped {
@@ -23,3 +30,14 @@ p.title {
 	padding-top: 6px;
 	margin-bottom: 6px !important;
 }
+
+// .card-content {
+// 	position: absolute;
+// 	bottom: 0;
+// 	left: 0;
+// 	top: 190px;
+// 	background-color: #fff;
+// }
+
+
+

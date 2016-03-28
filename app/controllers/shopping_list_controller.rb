@@ -1,5 +1,5 @@
 class ShoppingListController < ApplicationController
-	def list
+	def index
 		condiments = ["Spices and Seasonings","Oil, Vinegar, Salad Dressing","Ethnic Foods","Condiments","Baking"]
 		@shopping_list = Recipe.get_shopping_list(params[:menu])
 		@shopping_list_condiments = @shopping_list.select do |k,v| 

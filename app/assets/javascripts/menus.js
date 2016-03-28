@@ -120,7 +120,7 @@ MyMenuApp.MyMenu.setShoppingList = function(){
 		recipe_ids.push($($('.js-recipe')[i]).data('type-id'));
 	});
 
-	$('.js-shopping').attr("href","/list/"+recipe_ids);
+	$('.js-shopping').attr("href","/shopping_list/"+recipe_ids);
 };
 
 MyMenuApp.MyMenu.prototype.loadMenus = function(){
