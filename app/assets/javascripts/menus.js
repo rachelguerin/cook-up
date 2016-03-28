@@ -127,7 +127,7 @@ MyMenuApp.MyMenu.prototype.loadMenus = function(){
 	$.each([1,2,3,4,5],function(i,x){
 		var menu_created_at = localStorage.getItem("Menu"+x+"_created_at");
 		if (menu_created_at != undefined){
-			$($('.js-show-menu')[i]).text(menu_created_at);
+			$($('.js-show-menu')[i]).text(x+"."+menu_created_at);
 		}
 	});	
 	$('.js-save-menus p').text("");
@@ -267,7 +267,7 @@ $(document).on("ready",function(){
 	$('.js-save-menu').on('click',function(){
 		var menu_id = $(this).data("menu-id")
 		MyMenuApp.MyMenu.saveToLocal(menu_id);
-		$(this).prev().text(localStorage.getItem("Menu"+menu_id+"_created_at"));
+		$(this).prev().text(menu_id+"."+localStorage.getItem("Menu"+menu_id+"_created_at"));
 	});
 
 	$('.js-show-menu').on('click',function(){
