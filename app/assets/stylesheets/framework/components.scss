@@ -6,16 +6,17 @@
 }
 
 .card {
-  // position: relative;
+  position: relative;
+  height: 400px;
   transform-style: preserve-3d;
   transition: transform 1s;
   border-radius: 3px;
  	&:hover{
  		box-shadow: 5px 5px 5px #888;
- 	// 	.card-content{
-		// 	top: 100px;
-		// 	transition: top 0.3s ease; 
-		// }
+ 		.card-content{
+			height: 300px;
+			transition: height 0.3s ease; 
+		}
 		// .content {
 		// 	display: block;
 		// }
@@ -31,13 +32,12 @@ p.title {
 	margin-bottom: 6px !important;
 }
 
-// .card-content {
-// 	position: absolute;
-// 	bottom: 0;
-// 	left: 0;
-// 	top: 190px;
-// 	background-color: #fff;
-// }
+.card-content {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: #fff;
+}
 
 
 
