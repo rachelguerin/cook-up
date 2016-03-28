@@ -2,7 +2,7 @@
 <div class="notification is-success js-save-menus">
   <button class="delete"></button>
   <ul><% 1.upto(5) do |i| %>
-  	<li><a href="#" data-menu-id=<%="#{i}"%> alt="View menu" class="button is-success is-inverted is-outlined js-show-menu">Menu <%=i%> (empty slot)</a>&nbsp;<a href="#" data-menu-id=<%="#{i}"%> alt="Save menu" class="button is-success is-inverted is-outlined js-save-menu"><i class="fa fa-floppy-o"></i></a>
+  	<li><a href="#" data-menu-id=<%="#{i}"%> alt="View menu" class="button is-success is-inverted is-outlined js-show-menu">Menu <%=i%> (empty slot)</a>&nbsp;<a href="#" data-menu-id=<%="#{i}"%> alt="Save menu" class="button is-success is-inverted is-outlined js-save-menu">save current</a>
   	<% end %>
   </ul>
   <p></p>
