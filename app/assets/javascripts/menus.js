@@ -150,7 +150,7 @@ MyMenuApp.MyMenu.prototype.renderLocalStorage = function(menu_id){
 			$($('.js-servings')[i]).text(recipe.servings);
 		})
 		$('.js-image').delay(400).removeClass("fadeout");
-		$('.js-save').addClass('is-disabled');
+		MyMenuApp.MyMenu.setShoppingList();
 
 	} else {
 		$('.js-save-menus p').text("No menu saved.")
