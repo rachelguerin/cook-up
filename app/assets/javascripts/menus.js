@@ -130,6 +130,7 @@ MyMenuApp.MyMenu.prototype.loadMenus = function(){
 			$($('.js-show-menu')[i]).text(menu_created_at);
 		}
 	});	
+	$('.js-save-menus p').text("");
 };
 
 MyMenuApp.MyMenu.prototype.renderLocalStorage = function(menu_id){
@@ -152,7 +153,7 @@ MyMenuApp.MyMenu.prototype.renderLocalStorage = function(menu_id){
 		$('.js-save').addClass('is-disabled');
 
 	} else {
-		alert("No menu saved.");
+		$('.js-save-menus p').text("No menu saved.")
 		this.render();
 	}
 };
@@ -182,7 +183,7 @@ MyMenuApp.MyMenu.saveToLocal = function(menu_id){
 	localStorage.setItem("Menu"+menu_id,JSON.stringify(recipes));
 	localStorage.setItem("Menu"+menu_id+"_created_at",now_print);
 	MyMenuApp.MyMenu.setShoppingList();
-	alert('Menu '+menu_id+" saved.")
+	$('.js-save-menus p').text("Menu "+menu_id+" saved.")
 };
 
 MyMenuApp.MyMenu.setRecipeCardHeight = function(){
@@ -275,6 +276,7 @@ $(document).on("ready",function(){
 
 	$('.js-menu-manager').hover(function(){
 		$('.js-save-menus').fadeIn();
+		$('.js-menu-manager').toggleClass('is-outlined');
 		my_menu.loadMenus();
 	});
 
