@@ -10,10 +10,11 @@ class ShoppingListController < ApplicationController
 			!condiments.include?(k)
 		end
 		@menu = params[:menu]
+		@recipes = Recipe.where(id: @menu.split(",").map { |s| s.to_i })
 		
 	end
 
-	def shopping_list
+	def mail_shopping_list
 		MenuMailer.shopping_list(params[:menu],params[:email],params[:shopping_list]).deliver_now
 		redirect_to '/'
 	end	

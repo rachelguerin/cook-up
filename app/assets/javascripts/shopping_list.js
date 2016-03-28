@@ -28,4 +28,5 @@ $(document).on("ready",function(){
 	if (localStorage.getItem("email") != 'undefined'){
 		$("input[name='email']").val(localStorage.getItem("email"));
 	}
+
 });
