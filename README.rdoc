@@ -1,28 +1,28 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Synopsis
+Cook-up is a recipe search engine to assist planning and shopping for weekly meals. 
 
-Things you may want to cover:
+## Motivation
+I like food, I like cooking but it's difficult to find the time and energy to prepare the weekly shopping and keep the weekly menu varied, healthy and interesting. Other menu calendars available are extremely busy on the page and difficult to maintain. Cook-up is a much simpler service that provides a lot with very little and fun user interaction. 
 
-* Ruby version
+## Features
+Make a Menu 
+- run through this quick query to select cooking time available, maximum serves and any dietary restrictions (vegetarian, vegan, dairy-free, gluten-free). Your weekly menu will take into account your personal needs
 
-* System dependencies
+Recipes 
+- click on a recipe to view ingredients and cooking method
+- click on the 'x' to replace unappealing recipes with a new one based on your personal needs
 
-* Configuration
+Menus
+- save up to 5 weekly menus of your choice
 
-* Database creation
+Show Recipe 
+- click on each step as you cook to keep track of where you are in the recipe
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Shopping List
+- show the aggregated shopping list for your weekly menu
+  - items are grouped by where you can find them in the supermarket
+  - cross off items you don't need by clicking on them
+  - send yourself your shopping list - it will only include the items you need to buy
+  
