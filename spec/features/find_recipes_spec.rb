@@ -32,16 +32,10 @@ feature 'User searches for a weekly menu' do
   		expect(page).to have_content('your weekly menu')
   	end
 
-	# scenario 'with no time, a couple, no diet restrictions' do
-	#     visit '/'
-	#     click_link('make_menu')
+  	scenario 'navigates to shopping list' do
+  		visit '/shopping_list/'+r2.id.to_s
+  		expect(page).to have_content('Shopping List')
 
-	#     expect(page).to have_content('How much time do you have to cook?')
- #  	end
+  	end
 
- #  	scenario 'with no time, a couple, no diet restrictions' do
-	#     visit '/'
-
-	#     expect(page).not_to have_content('How much time do you have to cook?')
- #  	end
 end
