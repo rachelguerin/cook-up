@@ -291,7 +291,7 @@ $(document).on("ready",function(){
 	});
 
 	$('.js-recipe').hover(function(){
-		$(this).children('.card-content').children('.media').children('.media-content').children('.title').toggleClass('hilight');
+		$(this).find('.js-title').toggleClass('hilight');
 	});
 
 
