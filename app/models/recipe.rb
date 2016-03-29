@@ -44,24 +44,15 @@ class Recipe < ActiveRecord::Base
       recipe_ids = menu.split(",").map { |s| s.to_i }
       shopping_list = {}
 
-      food_types = Ingredient.select(:food_type)
-        .where(id:  
-          Quantity.select(:ingredient_id)
-          .where(recipe_id: recipe_ids)
-          .where.not(ingredient_id: Ingredient.where(name: 'water').ids)
-          .group(:ingredient_id).map{|i| i.ingredient_id})
-        .group(:food_type)
+      food_types = Ingredient.get_food_types(recipe_ids)
 
       food_types.each do |f|
         ingredients = []
-        ingredients_by_food_type = Ingredient.where(id:  
-          Quantity.select(:ingredient_id)
-          .where(recipe_id: recipe_ids)
-          .group(:ingredient_id).map{|i| i.ingredient_id},food_type: f.food_type)
+        ingredients_by_food_type = Ingredient.get_ingredients_by_food_type(recipe_ids,f.food_type)
 
         ingredients_by_food_type.each do |i|
-          total_qty = Quantity.where(recipe_id: recipe_ids, ingredient_id: i.id).sum(:quantity)
-          unit = Quantity.where(ingredient_id: i.id).first.unit
+          total_qty = Quantity.calculate_total(recipe_ids,i.id)
+          unit = Quantity.get_unit(recipe_ids,i.id)
 
           ingredients << {ingredient: i, quantity: total_qty, unit: unit}
         end
