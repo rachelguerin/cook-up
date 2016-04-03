@@ -295,6 +295,6 @@ $(document).on("ready",function(){
 	});
 
 
-	MyMenuApp.MyMenu.setRecipeCardHeight();
+	// MyMenuApp.MyMenu.setRecipeCardHeight();
 
 });
