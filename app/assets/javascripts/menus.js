@@ -103,7 +103,7 @@ MyMenuApp.MyMenu.prototype.render = function(){
 			
 			});	
 			localStorage.setItem("recipeBackups",JSON.stringify(recipes));	
-			// MyMenuApp.MyMenu.saveToLocal();
+			MyMenuApp.MyMenu.saveToLocal("1");
 		},
 		error: function(error){
 			console.log("There was an error.");
